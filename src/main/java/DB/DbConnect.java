@@ -6,12 +6,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DbConnect {
+    static Connection connection = null;
 
-    private String a ="";
-
-    public static void main(String[] args) throws SQLException {
-
-        Connection connection = null;
+    public void Connect(){
 
         try {
             Class.forName("org.postgresql.Driver");
@@ -23,8 +20,13 @@ public class DbConnect {
                 System.out.println("No");
             }
 
-        } catch (ClassNotFoundException e) {
+        } catch (ClassNotFoundException | SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+
+    public Connection getConnection() {
+        return connection;
     }
 }
