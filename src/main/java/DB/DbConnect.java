@@ -7,6 +7,7 @@ import java.sql.SQLException;
 
 public class DbConnect {
 
+    private String a ="";
 
     public static void main(String[] args) throws SQLException {
 
