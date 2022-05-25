@@ -70,19 +70,12 @@
               <li class="nav-item active">
                 <a class="nav-link" href="fleet.jsp">Fleet</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="offers.html">Offers</a>
-              </li>
               <li class="nav-item dropdown">
                 <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">About</a>
               
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="about.jsp">About Us</a>
-                    <a class="dropdown-item" href="blog.html">Blog</a>
                     <a class="dropdown-item" href="team.jsp">Team</a>
-                    <a class="dropdown-item" href="testimonials.html">Testimonials</a>
-                    <a class="dropdown-item" href="faq.html">FAQ</a>
-                    <a class="dropdown-item" href="terms.html">Terms</a>
                 </div>
               </li>
               <li class="nav-item">
