@@ -74,7 +74,7 @@
                 <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">About</a>
               
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="about.jsp">About Us</a>
+                    <a class="dropdown-item" href="about.jsp">About </a>
                     <a class="dropdown-item active" href="team.jsp">Team</a>
                 </div>
               </li>
