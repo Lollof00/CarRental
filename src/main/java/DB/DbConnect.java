@@ -8,11 +8,10 @@ import java.sql.Timestamp;
 
 public class DbConnect {
 
-    private String a ="";
+    static Connection connection = null;
 
-    public static void main(String[] args) throws SQLException {
+    public void Connect(){
 
-        Connection connection = null;
 
         try {
             Class.forName("org.postgresql.Driver");
@@ -24,7 +23,7 @@ public class DbConnect {
                 System.out.println("No");
             }
 
-        } catch (ClassNotFoundException e) {
+        } catch (ClassNotFoundException | SQLException e) {
             throw new RuntimeException(e);
         }
     }
@@ -33,5 +32,9 @@ public class DbConnect {
         Long datetime = System.currentTimeMillis();
         Timestamp timestamp = new Timestamp(datetime);
         System.out.println(timestamp);
+    }
+
+    public Connection getConnection() {
+        return connection;
     }
 }
