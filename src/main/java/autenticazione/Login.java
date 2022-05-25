@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -26,7 +27,10 @@ public class Login extends HttpServlet {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
         try {
-            dbOperations.Autenticazione(username,password);
+            if(dbOperations.Autenticazione(username,password)){
+                HttpSession session = req.getSession(true);
+                resp.sendRedirect("index.jsp");
+            };
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
