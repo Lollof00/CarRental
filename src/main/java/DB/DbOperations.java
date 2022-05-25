@@ -1,8 +1,6 @@
 package DB;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class DbOperations {
     private PreparedStatement result;
@@ -25,12 +23,39 @@ public class DbOperations {
             }
             if (resultSet.next()){
                 System.out.println("esiste");
+                exist = true;
             }else{
                 System.out.println("non esiste");
             }
 
         } catch (Exception e){
             e.printStackTrace();
+        }
+        return exist;
+    }
+
+    public boolean Registrazione(String nome, String cognome, String cf, String nascita, String email, String username, String password) throws SQLException {
+        boolean exist = false;
+        if(Autenticazione(username,password)){
+            exist = true;
+        }else{
+            try{
+
+                Long datetime = System.currentTimeMillis();
+                Timestamp timestamp = new Timestamp(datetime);
+                result = connect.getConnection().prepareStatement("INSERT into public.utenti(id,nome,cognome,nascita,registrazione,password,username,email,cf) values (DEFAULT,?,?,?,?,?,?,?,?)");
+                result.setString(1,nome);
+                result.setString(2,cognome);
+                result.setDate(3, Date.valueOf(nascita));
+                result.setTimestamp(4,timestamp);
+                result.setString(5,password);
+                result.setString(6,username);
+                result.setString(7,email);
+                result.setString(8,cf);
+                result.executeUpdate();
+            } catch (Exception e){
+                e.printStackTrace();
+            }
         }
         return exist;
     }
