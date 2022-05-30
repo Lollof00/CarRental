@@ -68,6 +68,7 @@
                         </div>
                         <input type="password" class="form-control" name="password" placeholder="password">
                     </div>
+                    <input type="hidden" value="" name="Path" id="path"/>
                     <div class="form-group">
                         <input type="submit" value="Registrati" class="btn float-right login_btn">
                     </div>
@@ -82,4 +83,7 @@
     </div>
 </div>
 </body>
+<script>
+    document.getElementById("path").setAttribute("value",window.location.href)
+</script>
 </html>

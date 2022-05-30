@@ -31,6 +31,8 @@ public class Registrazione extends HttpServlet {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
 
+        String path = req.getParameter("Path");
+        System.out.println(req.getParameter("Path"));
 
         try {
             dbOperations.Registrazione(nome,cognome,cf,nascita,email,username,password);

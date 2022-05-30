@@ -53,6 +53,9 @@
                 <div class="d-flex justify-content-center">
                     <a href="#">Hai dimenticato la password?</a>
                 </div>
+                <div class="d-flex justify-content-center">
+                    <a href="login-admin.jsp">Sei un amministratore?</a>
+                </div>
             </div>
         </div>
     </div>

@@ -1,6 +1,5 @@
 package autenticazione;
 
-import DB.DbConnect;
 import DB.DbOperations;
 
 import javax.servlet.ServletException;
@@ -12,14 +11,13 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@WebServlet(name = "login", value = "/login")
-public class Login extends HttpServlet {
-
+@WebServlet(name = "loginAdmin", value = "/loginAdmin")
+public class LoginAdmin extends HttpServlet {
     private DbOperations dbOperations;
 
     @Override
     public void init() throws ServletException {
-       dbOperations = new DbOperations();
+        dbOperations = new DbOperations();
     }
 
     @Override
@@ -27,9 +25,9 @@ public class Login extends HttpServlet {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
         try {
-            if(dbOperations.Autenticazione(username,password).equals("user")){
+            if(dbOperations.Autenticazione(username,password).equals("admin")){
                 HttpSession session = req.getSession(true);
-                resp.sendRedirect("index.jsp");
+                resp.sendRedirect("admin-page.jsp");
             }else{
                 //TODO messaggo di errore
             };

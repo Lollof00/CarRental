@@ -18,9 +18,9 @@ public class DbConnect {
             connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/CarRental?user=lollo&password=lorenzo00");
 
             if(connection!=null){
-                System.out.println("Si");
+                //System.out.println("Si");
             }else {
-                System.out.println("No");
+                //System.out.println("No");
             }
 
         } catch (ClassNotFoundException | SQLException e) {
