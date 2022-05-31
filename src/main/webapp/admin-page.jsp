@@ -205,17 +205,13 @@
                             var toEdit = []
                             input.each(function(){
                                 $(this).parent("td").html($(this).val());
-                                //alert($(this).val());
                                 toEdit.push($(this).val());
                             });
                             $.ajax({
                                 type: "POST",
                                 url: "AdminServlet",
-                                contentType: "application/json",
-                                data: JSON.stringify(toEdit),
-                                success: function(response) {
-                                    alert("okkkk")
-                                }
+                                dataType: "json",
+                                data: {d:toEdit}
                             });
                             $(this).parents("tr").find(".add, .edit").toggle();
                             $(".add-new").removeAttr("disabled");

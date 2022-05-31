@@ -81,4 +81,25 @@ public class DbOperations {
         }
         return veicoli;
     }
+
+    public boolean UpdateVeicoli(String[] veicoli){
+        boolean error=false;
+        try {
+            result = connect.getConnection().prepareStatement("UPDATE public.macchine SET modello=?,produttore=?,targa=?,giornaliero=?,passeggeri=?,porte=?,bagagli=? where id=?");
+            result.setInt(8, Integer.parseInt(veicoli[0]));
+
+            result.setString(1,veicoli[1]);
+            result.setInt(2, Integer.parseInt(veicoli[2]));
+            result.setString(3, veicoli[3]);
+            result.setDouble(4, Double.parseDouble(veicoli[4]));
+            result.setInt(5, Integer.parseInt(veicoli[5]));
+            result.setInt(6, Integer.parseInt(veicoli[6]));
+            result.setInt(7, Integer.parseInt(veicoli[7]));
+            result.executeUpdate();
+
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return error;
+    }
 }
