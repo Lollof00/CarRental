@@ -76,7 +76,6 @@ public class DbOperations {
                 }
                 veicoli.add(riga);
         }
-            System.out.println(veicoli.get(0));
     } catch (SQLException e) {
             throw new RuntimeException(e);
         }

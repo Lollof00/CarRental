@@ -202,8 +202,20 @@
                         });
                         $(this).parents("tr").find(".error").first().focus();
                         if(!empty){
+                            var toEdit = []
                             input.each(function(){
                                 $(this).parent("td").html($(this).val());
+                                //alert($(this).val());
+                                toEdit.push($(this).val());
+                            });
+                            $.ajax({
+                                type: "POST",
+                                url: "AdminServlet",
+                                contentType: "application/json",
+                                data: JSON.stringify(toEdit),
+                                success: function(response) {
+                                    alert("okkkk")
+                                }
                             });
                             $(this).parents("tr").find(".add, .edit").toggle();
                             $(".add-new").removeAttr("disabled");
