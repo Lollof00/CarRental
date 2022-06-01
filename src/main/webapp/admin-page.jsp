@@ -227,6 +227,9 @@
                     });
                     // Delete row on delete button click
                     $(document).on("click", ".delete", function(){
+                        $(this).parents("tr").find("td:not(:last-child)").each(function(){
+                            alert($(this).text())
+                        });
                         $(this).parents("tr").remove();
                         $(".add-new").removeAttr("disabled");
                     });
