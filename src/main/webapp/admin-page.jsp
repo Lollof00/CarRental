@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="assets/css/owl.css">
     <style>
         .table-wrapper {
-            width: 1000px;
+            width: 1100px;
             margin: 30px auto;
             background: #fff;
             padding: 20px;
@@ -55,7 +55,7 @@
             margin-right: 4px;
         }
         table.table {
-            table-layout: fixed;
+
         }
         table.table tr th, table.table tr td {
             border-color: #e9e9e9;
@@ -171,6 +171,7 @@
                     var actions = $("table td:last-child").html();
                     // Append table with add row form on add new button click
                     $(".add-new").click(function(){
+                        alert("coddio")
                         $(this).attr("disabled", "disabled");
                         var index = $("table tbody tr:last-child").index();
                         var row = '<tr>' +
@@ -182,6 +183,7 @@
                             '<td><input type="text" class="form-control" name="passeggeri" id="passeggeri"></td>' +
                             '<td><input type="text" class="form-control" name="porte" id="porte"></td>' +
                             '<td><input type="text" class="form-control" name="bagagli" id="bagagli"></td>' +
+                            '<td><input type="file" class="form-control" name="image" id="image" accept="image/png, image/jpg"></td>' +
                             '<td>' + actions + '</td>' +
                             '</tr>'////;
                         $("table").append(row);
@@ -194,7 +196,7 @@
                     // Add row on add button click
                     $(document).on("click", ".add", function(){
                         var empty = false;
-                        var input = $(this).parents("tr").find('input[type="text"]');
+                        var input = $(this).parents("tr").find('input[type="text"],input[type="file"]');
                         input.each(function(i){
                             let errore="Ci sono errori nei campi: "
                             switch (i){
@@ -260,10 +262,15 @@
                         $(this).parents("tr").find(".error").first().focus();
                         if(!empty){
                             var toEdit = []
-                            input.each(function(){
+                            input.each(function(i){
                                 $(this).parent("td").html($(this).val());
+                                if(i===8){
+                                    var file = $(this).val().replace(/^.*[\\\/]/, '')
+                                    toEdit.push(file)
+                                }
                                 toEdit.push($(this).val());
                             });
+                            // TODO gestire la modifica dell'image
                             $.ajax({
                                 type: "POST",
                                 url: "AdminServlet",
@@ -276,8 +283,12 @@
                     });
                     // Edit row on edit button click
                     $(document).on("click", ".edit", function(){
-                        $(this).parents("tr").find("td:not(:last-child)").each(function(){
-                            $(this).html('<input type="text" class="form-control" value="' + $(this).text() + '">');
+                        $(this).parents("tr").find("td:not(:last-child)").each(function(i){
+                            if(i===8){
+                                $(this).html('<input type="file" class="form-control">');
+                            }else {
+                                $(this).html('<input type="text" class="form-control" value="' + $(this).text() + '">');
+                            }
                         });
                         $(this).parents("tr").find(".add, .edit").toggle();
                         $(".add-new").attr("disabled", "disabled");
@@ -304,7 +315,7 @@
                 <div class="table-wrapper">
                     <div class="table-title">
                         <div class="row">
-                            <div class="col-sm-8"><h2>Employee <b>Details</b></h2></div>
+                            <div class="col-sm-8"><h2>Dettagli <b>Macchine</b></h2></div>
                             <div class="col-sm-4">
                                 <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add New</button>
                             </div>
@@ -321,6 +332,7 @@
                             <th>Passeggeri</th>
                             <th>Porte</th>
                             <th>Bagagli</th>
+                            <th>Immagine</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -337,6 +349,7 @@
                             <td><%=veicolo.get(5)%></td>
                             <td><%=veicolo.get(6)%></td>
                             <td><%=veicolo.get(7)%></td>
+                            <td><img src="carImage/<%=veicolo.get(8)%>" width="100" height="100"></td>
                             <td>
                                 <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
                                 <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
