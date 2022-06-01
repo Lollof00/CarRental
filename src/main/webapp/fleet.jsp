@@ -1,3 +1,5 @@
+<%@ page import="DB.DbOperations" %>
+<%@ page import="java.util.ArrayList" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -102,19 +104,22 @@
     <div class="services">
       <div class="container">
         <div class="row">
+          <% DbOperations operations = new DbOperations();
+            ArrayList<ArrayList<String>> veicoli = operations.GetVeicoli();
+            for(ArrayList<String> veicolo : veicoli){
+          %>
           <div class="col-md-4">
             <div class="service-item">
-              <img src="assets/images/product-1-720x480.jpg" alt="">
+              <%=veicolo.get(8)%>
               <div class="down-content">
-                <h4>Lorem ipsum dolor sit amet</h4>
+                <h4><%=veicolo.get(1)%></h4>
                 <div style="margin-bottom:10px;">
-                  <span>from <sup>$</sup>120 per weekend</span>
+                  <span>from <sup>$</sup><%=veicolo.get(4)%> per weekend</span>
                 </div>
                 <p>
-                  <i class="fa fa-user" title="passegengers"></i> 5 &nbsp;&nbsp;&nbsp;
-                  <i class="fa fa-briefcase" title="luggages"></i> 4 &nbsp;&nbsp;&nbsp;
-                  <i class="fa fa-sign-out" title="doors"></i> 4 &nbsp;&nbsp;&nbsp;
-                  <i class="fa fa-cog" title="transmission"></i> A
+                  <i class="fa fa-user" title="passegengers"></i> <%=veicolo.get(5)%> &nbsp;&nbsp;&nbsp;
+                  <i class="fa fa-briefcase" title="luggages"></i> <%=veicolo.get(7)%> &nbsp;&nbsp;&nbsp;
+                  <i class="fa fa-sign-out" title="doors"></i> <%=veicolo.get(6)%> &nbsp;&nbsp;&nbsp;
                 </p>
                 <a href="#" data-toggle="modal" data-target="#exampleModal" class="filled-button">Book Now</a>
               </div>
@@ -123,110 +128,11 @@
             <br>
           </div>
 
-          <div class="col-md-4">
-            <div class="service-item">
-              <img src="assets/images/product-2-720x480.jpg" alt="">
-              <div class="down-content">
-                <h4>Lorem ipsum dolor sit amet</h4>
-                <div style="margin-bottom:10px;">
-                  <span>from <sup>$</sup>120 per weekend</span>
-                </div>
-                <p>
-                  <i class="fa fa-user" title="passegengers"></i> 5 &nbsp;&nbsp;&nbsp;
-                  <i class="fa fa-briefcase" title="luggages"></i> 4 &nbsp;&nbsp;&nbsp;
-                  <i class="fa fa-sign-out" title="doors"></i> 4 &nbsp;&nbsp;&nbsp;
-                  <i class="fa fa-cog" title="transmission"></i> A
-                </p>
-                <a href="#" data-toggle="modal" data-target="#exampleModal" class="filled-button">Book Now</a>
-              </div>
-            </div>
+
 
             <br>
           </div>
-
-          <div class="col-md-4">
-            <div class="service-item">
-              <img src="assets/images/product-3-720x480.jpg" alt="">
-              <div class="down-content">
-                <h4>Lorem ipsum dolor sit amet</h4>
-                <div style="margin-bottom:10px;">
-                  <span>from <sup>$</sup>120 per weekend</span>
-                </div>
-                <p>
-                  <i class="fa fa-user" title="passegengers"></i> 5 &nbsp;&nbsp;&nbsp;
-                  <i class="fa fa-briefcase" title="luggages"></i> 4 &nbsp;&nbsp;&nbsp;
-                  <i class="fa fa-sign-out" title="doors"></i> 4 &nbsp;&nbsp;&nbsp;
-                  <i class="fa fa-cog" title="transmission"></i> A
-                </p>
-                <a href="#" data-toggle="modal" data-target="#exampleModal" class="filled-button">Book Now</a>
-              </div>
-            </div>
-
-            <br>
-          </div>
-
-          <div class="col-md-4">
-            <div class="service-item">
-              <img src="assets/images/product-4-720x480.jpg" alt="">
-              <div class="down-content">
-                <h4>Lorem ipsum dolor sit amet</h4>
-                <div style="margin-bottom:10px;">
-                  <span>from <sup>$</sup>120 per weekend</span>
-                </div>
-                <p>
-                  <i class="fa fa-user" title="passegengers"></i> 5 &nbsp;&nbsp;&nbsp;
-                  <i class="fa fa-briefcase" title="luggages"></i> 4 &nbsp;&nbsp;&nbsp;
-                  <i class="fa fa-sign-out" title="doors"></i> 4 &nbsp;&nbsp;&nbsp;
-                  <i class="fa fa-cog" title="transmission"></i> A
-                </p>
-                <a href="#" data-toggle="modal" data-target="#exampleModal" class="filled-button">Book Now</a>
-              </div>
-            </div>
-
-            <br>
-          </div>
-
-          <div class="col-md-4">
-            <div class="service-item">
-              <img src="assets/images/product-5-720x480.jpg" alt="">
-              <div class="down-content">
-                <h4>Lorem ipsum dolor sit amet</h4>
-                <div style="margin-bottom:10px;">
-                  <span>from <sup>$</sup>120 per weekend</span>
-                </div>
-                <p>
-                  <i class="fa fa-user" title="passegengers"></i> 5 &nbsp;&nbsp;&nbsp;
-                  <i class="fa fa-briefcase" title="luggages"></i> 4 &nbsp;&nbsp;&nbsp;
-                  <i class="fa fa-sign-out" title="doors"></i> 4 &nbsp;&nbsp;&nbsp;
-                  <i class="fa fa-cog" title="transmission"></i> A
-                </p>
-                <a href="#" data-toggle="modal" data-target="#exampleModal" class="filled-button">Book Now</a>
-              </div>
-            </div>
-
-            <br>
-          </div>
-
-          <div class="col-md-4">
-            <div class="service-item">
-              <img src="assets/images/product-6-720x480.jpg" alt="">
-              <div class="down-content">
-                <h4>Lorem ipsum dolor sit amet</h4>
-                <div style="margin-bottom:10px;">
-                  <span>from <sup>$</sup>120 per weekend</span>
-                </div>
-                <p>
-                  <i class="fa fa-user" title="passegengers"></i> 5 &nbsp;&nbsp;&nbsp;
-                  <i class="fa fa-briefcase" title="luggages"></i> 4 &nbsp;&nbsp;&nbsp;
-                  <i class="fa fa-sign-out" title="doors"></i> 4 &nbsp;&nbsp;&nbsp;
-                  <i class="fa fa-cog" title="transmission"></i> A
-                </p>
-                <a href="#" data-toggle="modal" data-target="#exampleModal" class="filled-button">Book Now</a>
-              </div>
-            </div>
-
-            <br>
-          </div>
+        <%}%>
         </div>
 
         <br>

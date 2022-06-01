@@ -15,7 +15,7 @@ public class DbConnect {
 
         try {
             Class.forName("org.postgresql.Driver");
-            connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/CarRental?user=lollo&password=lorenzo00");
+            connection = DriverManager.getConnection("jdbc:postgresql://93.48.159.96:5432/CarRental?user=mic&password=ciao");
 
             if(connection!=null){
                 //System.out.println("Si");

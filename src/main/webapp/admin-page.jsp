@@ -183,7 +183,7 @@
                             '<td><input type="text" class="form-control" name="porte" id="porte"></td>' +
                             '<td><input type="text" class="form-control" name="bagagli" id="bagagli"></td>' +
                             '<td>' + actions + '</td>' +
-                            '</tr>';
+                            '</tr>'////;
                         $("table").append(row);
                         $("table tbody tr").eq(index + 1).find(".add, .edit").toggle();
                         $('[data-toggle="tooltip"]').tooltip();
