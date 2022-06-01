@@ -26,14 +26,26 @@ public class AdminServlet extends HttpServlet {
     }
 
     @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String id = req.getParameter("id");
+        System.out.println(id);
+        if(!dbOperations.DeleteVeicoli(Integer.valueOf(id))){
+            System.out.println("eliminazione effettuata");
+        }else {
+            System.out.println("eliminazione non riuscita");
+        }
+    }
+
+    @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String[] data = req.getParameterValues("d[]");
 
         if(!dbOperations.UpdateVeicoli(data)){
-            System.out.println("ok");
+            System.out.println("modifica effettuata");
         }else{
-            System.out.println("error");
+            System.out.println("errore nella modifica");
         }
 
     }
+
 }

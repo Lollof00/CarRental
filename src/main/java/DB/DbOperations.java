@@ -2,6 +2,7 @@ package DB;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class DbOperations {
     private PreparedStatement result;
@@ -85,20 +86,50 @@ public class DbOperations {
     public boolean UpdateVeicoli(String[] veicoli){
         boolean error=false;
         try {
+            result = connect.getConnection().prepareStatement("SELECT * from public.macchine where id=?");
+            result.setInt(1, Integer.parseInt(veicoli[0]));
+            ResultSet resultSet = result.executeQuery();
+            if (resultSet.next()){
             result = connect.getConnection().prepareStatement("UPDATE public.macchine SET modello=?,produttore=?,targa=?,giornaliero=?,passeggeri=?,porte=?,bagagli=? where id=?");
             result.setInt(8, Integer.parseInt(veicoli[0]));
 
             result.setString(1,veicoli[1]);
             result.setInt(2, Integer.parseInt(veicoli[2]));
-            result.setString(3, veicoli[3]);
+            result.setString(3, veicoli[3].toUpperCase());
             result.setDouble(4, Double.parseDouble(veicoli[4]));
             result.setInt(5, Integer.parseInt(veicoli[5]));
             result.setInt(6, Integer.parseInt(veicoli[6]));
             result.setInt(7, Integer.parseInt(veicoli[7]));
             result.executeUpdate();
+            }else {
+                result = connect.getConnection().prepareStatement("INSERT into public.macchine(id,modello,produttore,targa,giornaliero,passeggeri,porte,bagagli) values (?,?,?,?,?,?,?,?)");
+                result.setInt(1, Integer.parseInt(veicoli[0]));
+                result.setString(2,veicoli[1]);
+                result.setInt(3, Integer.parseInt(veicoli[2]));
+                result.setString(4, veicoli[3]);
+                result.setDouble(5, Double.parseDouble(veicoli[4]));
+                result.setInt(6, Integer.parseInt(veicoli[5]));
+                result.setInt(7, Integer.parseInt(veicoli[6]));
+                result.setInt(8, Integer.parseInt(veicoli[7]));
+                result.executeUpdate();
+            }
 
         } catch (Exception e){
             e.printStackTrace();
+            error = true;
+        }
+        return error;
+    }
+
+    public boolean DeleteVeicoli(Integer id){
+        boolean error = false;
+        try{
+            result = connect.getConnection().prepareStatement("DELETE FROM public.macchine  where id=?");
+            result.setInt(1, id);
+            result.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            error = true;
         }
         return error;
     }

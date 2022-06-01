@@ -177,7 +177,7 @@
                             '<td><input type="text" class="form-control" name="id" id="id"></td>' +
                             '<td><input type="text" class="form-control" name="modello" id="modello"></td>' +
                             '<td><input type="text" class="form-control" name="produttore" id="produttore"></td>' +
-                            '<td><input type="text" class="form-control" name="targa" id="targa"></td>' +
+                            '<td><input type="text" class="form-control" name="targa" id="targa" maxlength="7"></td>' +
                             '<td><input type="text" class="form-control" name="costoGiornaliero" id="costoGiornaliero"></td>' +
                             '<td><input type="text" class="form-control" name="passeggeri" id="passeggeri"></td>' +
                             '<td><input type="text" class="form-control" name="porte" id="porte"></td>' +
@@ -187,12 +187,69 @@
                         $("table").append(row);
                         $("table tbody tr").eq(index + 1).find(".add, .edit").toggle();
                         $('[data-toggle="tooltip"]').tooltip();
+                        $(this).parents("tr").find("td:not(:last-child)").each(function(i,el){
+                          alert($(this).text())
+                        });
                     });
                     // Add row on add button click
                     $(document).on("click", ".add", function(){
                         var empty = false;
                         var input = $(this).parents("tr").find('input[type="text"]');
-                        input.each(function(){
+                        input.each(function(i){
+                            let errore="Ci sono errori nei campi: "
+                            switch (i){
+                                case 0:
+                                    if(isNaN($(this).val())){
+                                        $(this).addClass("error")
+                                        empty = true;
+                                        errore+="Id "
+                                    }
+                                    break;
+                                case 1:
+                                    break;
+                                case 2:
+                                    break;
+                                case 3:
+                                    const regex = new RegExp('[A-Z]{2}[0-9]{3}[A-Z]{2}$')
+                                    if(!regex.test($(this).val())){
+                                        $(this).addClass("error")
+                                        empty = true;
+                                        errore+="Targa "
+                                    }
+                                    break;
+                                case 4:
+                                    if(isNaN($(this).val())){
+                                        $(this).addClass("error")
+                                        empty = true;
+                                        errore+="Costo giornaliero "
+                                    }
+                                    break;
+                                case 5:
+                                    if(isNaN($(this).val())){
+                                        $(this).addClass("error")
+                                        empty = true;
+                                        errore+="Passeggeri "
+                                    }
+                                    break;
+                                case 6:
+                                    if(isNaN($(this).val())){
+                                        $(this).addClass("error")
+                                        empty = true;
+                                        errore+="Porte "
+                                    }
+                                    break;
+                                case 7:
+                                    if(isNaN($(this).val())){
+                                        $(this).addClass("error")
+                                        empty = true;
+                                        errore+="Bagagli "
+                                    }
+                                    break;
+                            }
+                            if(errore!=="Ci sono errori nei campi: "){
+                                alert(errore)
+                                return
+                            }
                             if(!$(this).val()){
                                 $(this).addClass("error");
                                 empty = true;
@@ -227,8 +284,15 @@
                     });
                     // Delete row on delete button click
                     $(document).on("click", ".delete", function(){
-                        $(this).parents("tr").find("td:not(:last-child)").each(function(){
-                            alert($(this).text())
+                        $(this).parents("tr").find("td:not(:last-child)").each(function(i,el){
+                            if(i===0){
+                                var id = $(this).text()
+                                $.ajax({
+                                    type: "get",
+                                    url: "AdminServlet",
+                                    data: {id:id}
+                                });
+                            }
                         });
                         $(this).parents("tr").remove();
                         $(".add-new").removeAttr("disabled");
