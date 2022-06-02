@@ -47,9 +47,7 @@
           </div>
           <div class="col-md-4">
             <ul class="right-icons">
-              <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-              <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+              <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
             </ul>
           </div>
         </div>
@@ -123,6 +121,10 @@
                   <i class="fa fa-sign-out" title="doors"></i> <%=veicolo.get(6)%> &nbsp;&nbsp;&nbsp;
                 </p>
                 <a href="#" data-toggle="modal" data-target="#exampleModal" class="filled-button">Book Now</a>
+                <p></p>
+                <!--<a href="#" data-toggle="modal" data-target="#exampleModal2" class="filled-button">Aggiungi ai preferiti</a>-->
+                <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2" >Aggiungi ai preferiti</button>
+                <!--creare servlet che aggiunge ai preferiti come cookie. Nella pagina dei preferiti usare una servlet da tramite per stamparli tutti -->
               </div>
             </div>
 
@@ -322,6 +324,29 @@
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
             <button type="button" class="btn btn-primary">Book Now</button>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="margin-top: 70px;">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <form>
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel2">Preferiti</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            La macchina e' stata aggiunta ai preferiti.
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-secondary" data-dismiss="modal">Chiudi</button>
+            <button type="submit" class="btn btn-primary">Vai ai preferiti</button>
+          </div>
+          </form>
         </div>
       </div>
     </div>
