@@ -109,7 +109,7 @@
             ArrayList<ArrayList<String>> veicoli = operations.GetVeicoli();
             for(ArrayList<String> veicolo : veicoli){
           %>
-          <div class="col-md-4">
+          <div class="col-md-4" id="col">
             <div class="service-item">
               <img class="immagine" src="carImage/<%=veicolo.get(8)%>" width="200" height="200">
               <div class="down-content">
@@ -132,8 +132,8 @@
 
 
             <br>
+          <%}%>
           </div>
-        <%}%>
         </div>
 
         <br>
