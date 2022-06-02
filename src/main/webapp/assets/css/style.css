@@ -558,7 +558,7 @@ ul.slick-dots {
 }
 
 .service-item img {
-	width: 100%;
+	max-width: 200px;
 	overflow: hidden;
 }
 
@@ -1400,4 +1400,5 @@ footer .contact-form button.filled-button:hover {
 }
 
 h5 a { color: #a4c639; } 
-h5 a:hover { color: inherit; } 
+h5 a:hover { color: inherit; }
+

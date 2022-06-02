@@ -1,5 +1,6 @@
 <%@ page import="DB.DbOperations" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="java.io.IOException" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -110,7 +111,7 @@
           %>
           <div class="col-md-4">
             <div class="service-item">
-              <%=veicolo.get(8)%>
+              <img class="immagine" src="carImage/<%=veicolo.get(8)%>" width="200" height="200">
               <div class="down-content">
                 <h4><%=veicolo.get(1)%></h4>
                 <div style="margin-bottom:10px;">
