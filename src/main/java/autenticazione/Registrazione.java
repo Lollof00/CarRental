@@ -7,13 +7,18 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Path;
 import java.sql.SQLException;
 import java.util.Date;
 
 @WebServlet(name = "registrazione", value = "/registrazione")
 public class Registrazione extends HttpServlet {
+    private enum ruolo{
+        user,admin
+    }
     private DbOperations dbOperations;
 
     @Override
@@ -31,13 +36,25 @@ public class Registrazione extends HttpServlet {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
 
-        String path = req.getParameter("Path");
-        System.out.println(req.getParameter("Path"));
+        Path path = Path.of(req.getParameter("Path"));
+        System.out.println(path.getFileName());
+
+
 
         try {
-            dbOperations.Registrazione(nome,cognome,cf,nascita,email,username,password);
+            if(path.getFileName().toString().equals("register.jsp")) {
+                dbOperations.Registrazione(nome, cognome, cf, nascita, email, username, password,ruolo.user);
+                HttpSession session = req.getSession(true);
+                resp.sendRedirect("index.jsp");
+            }else{
+                dbOperations.Registrazione(nome, cognome, cf, nascita, email, username, password,ruolo.admin);
+                HttpSession session = req.getSession(true);
+                resp.sendRedirect("admin-page.jsp");
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
+
+
 }
