@@ -178,7 +178,7 @@
                             '<td><input type="text" class="form-control" name="bagagli" id="bagagli"></td>' +
                             '<td><input type="file" class="form-control" name="image" id="image"></td>' +
                             '<td>' + actions + '</td>' +
-                            '</tr>'////;
+                            '</tr>';
                         $("table").append(row);
                         $("table tbody tr").eq(index + 1).find(".add, .edit").toggle();
                         $('[data-toggle="tooltip"]').tooltip();

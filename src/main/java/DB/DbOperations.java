@@ -85,33 +85,6 @@ public class DbOperations {
         return veicoli;
     }
 
-    public byte[] getPicture()
-    {
-        byte[] imgbytes = null;
-        ArrayList<ArrayList<byte[]>> immagini = new ArrayList<>();
-        try {
-            result = connect.getConnection().prepareStatement("SELECT * from public.macchine");
-            ResultSet resultSet = result.executeQuery();
-            ResultSetMetaData rsmd = resultSet.getMetaData();
-
-            int numCols= rsmd.getColumnCount();
-            while(resultSet.next()){
-                ArrayList<byte[]> riga = new ArrayList<>();
-                for (int i=1;i<=numCols;i++) {
-                    if (i == numCols)
-                    {
-                        imgbytes = resultSet.getBytes(resultSet.getString(i));
-                        riga.add(imgbytes);
-                    }
-                }
-                immagini.add(riga);
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return imgbytes;
-    }
-
     public boolean UpdateVeicoli(String[] veicoli){
         boolean error=false;
         try {
@@ -164,4 +137,10 @@ public class DbOperations {
         }
         return error;
     }
+
+
+
+
 }
+
+
