@@ -47,7 +47,7 @@
           </div>
           <div class="col-md-4">
             <ul class="right-icons">
-              <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+              <form action="preferiti" method="get"><li><button type="submit"><i class="fa fa-star" aria-hidden="true"></i></button></li></form>
             </ul>
           </div>
         </div>
@@ -107,10 +107,13 @@
             ArrayList<ArrayList<String>> veicoli = operations.GetVeicoli();
             for(ArrayList<String> veicolo : veicoli){
           %>
+
           <div class="col-md-4" id="col">
+            <form action="preferiti" method="post">
             <div class="service-item">
               <img class="immagine" src="carImage/<%=veicolo.get(8)%>" width="200" height="200">
               <div class="down-content">
+                <input type="hidden" name="id" value="<%=veicolo.get(0)%>">
                 <h4><%=veicolo.get(1)%></h4>
                 <div style="margin-bottom:10px;">
                   <span>from <sup>$</sup><%=veicolo.get(4)%> per weekend</span>
@@ -122,15 +125,13 @@
                 </p>
                 <a href="#" data-toggle="modal" data-target="#exampleModal" class="filled-button">Book Now</a>
                 <p></p>
-                <!--<a href="#" data-toggle="modal" data-target="#exampleModal2" class="filled-button">Aggiungi ai preferiti</a>-->
                 <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2" >Aggiungi ai preferiti</button>
                 <!--creare servlet che aggiunge ai preferiti come cookie. Nella pagina dei preferiti usare una servlet da tramite per stamparli tutti -->
               </div>
             </div>
-
+            </form>
             <br>
           </div>
-
 
 
             <br>
@@ -328,7 +329,7 @@
       </div>
     </div>
 
-    <!-- Modal -->
+    <!-- Modal
     <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="margin-top: 70px;">
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -350,6 +351,8 @@
         </div>
       </div>
     </div>
+
+    -->
 
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
