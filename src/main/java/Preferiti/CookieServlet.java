@@ -17,6 +17,7 @@ public class CookieServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         String id = req.getParameter("id");
+        String name = "id" + id;
 
         Cookie[] cookies = req.getCookies();
 
@@ -29,12 +30,6 @@ public class CookieServlet extends HttpServlet {
                 }
             }
         }
-
-
-
-        req.setAttribute("cookies", cookies);
-        RequestDispatcher dispatcher = req.getRequestDispatcher("preferiti.jsp");
-        dispatcher.forward(req, resp);
-
+        resp.sendRedirect("preferiti.jsp");
     }
 }

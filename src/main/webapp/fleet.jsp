@@ -129,7 +129,7 @@
                 <a href="#" data-toggle="modal" data-target="#exampleModal" class="filled-button" data="<%=veicolo.get(0)%>" id="modalBook">Book Now</a>
                 <p></p>
                 <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2" >Aggiungi ai preferiti</button>
-                <!--creare servlet che aggiunge ai preferiti come cookie. Nella pagina dei preferiti usare una servlet da tramite per stamparli tutti -->
+
               </div>
             </div>
             </form>

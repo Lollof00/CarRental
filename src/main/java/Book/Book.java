@@ -33,10 +33,9 @@ public class Book extends HttpServlet {
         String email = req.getParameter("email");
         String phone = req.getParameter("phone");
 
-        try {
+      /*  try {
             HttpSession session = req.getSession(false);
             if(dbOperations.aggiungiOrdine(pick_up_date, session.getAttribute("username"))){
-                HttpSession session = req.getSession(true);
                 resp.sendRedirect("index.jsp");
             }else{
                 //TODO messaggo di errore
@@ -44,6 +43,8 @@ public class Book extends HttpServlet {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+
+       */
 
     }
 }
