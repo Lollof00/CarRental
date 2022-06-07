@@ -3,6 +3,8 @@
 <%@ page import="DB.DbOperations" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.io.IOException" %>
+<%@ page import="java.util.Arrays" %>
+<%@ page import="java.util.Objects" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,6 +30,7 @@
 <body>
 
 <% Cookie cookie[] = (Cookie[]) request.getAttribute("cookies");%>
+
 
 <!-- ***** Preloader Start ***** -->
 <div id="preloader">
@@ -114,6 +117,7 @@
                 for(ArrayList<String> veicolo : veicoli){
                     for (int i = 1; i < cookie.length; i++)
                     {
+                        if(!Objects.equals(cookie[i].getName(), "JSESSIONID")){
                         if (Integer.parseInt(veicolo.get(0)) == Integer.parseInt(cookie[i].getValue()))
                         {
             %>
@@ -143,7 +147,8 @@
 
 
             <br>
-            <%          }
+            <%               }
+                        }
                     }
                 }
             }%>
