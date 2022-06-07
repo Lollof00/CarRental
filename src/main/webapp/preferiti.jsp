@@ -29,7 +29,10 @@
 
 <body>
 
-<% Cookie cookie[] = (Cookie[]) request.getAttribute("cookies");%>
+<% Cookie cookie[] = (Cookie[]) request.getAttribute("cookies");
+    for(Cookie c: cookie){
+        System.out.println(c.getValue());
+    };%>
 
 
 <!-- ***** Preloader Start ***** -->

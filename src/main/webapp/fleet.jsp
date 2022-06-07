@@ -21,6 +21,9 @@
     <link rel="stylesheet" href="assets/css/fontawesome.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/owl.css">
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
   </head>
 
   <body>
@@ -123,7 +126,7 @@
                   <i class="fa fa-briefcase" title="luggages"></i> <%=veicolo.get(7)%> &nbsp;&nbsp;&nbsp;
                   <i class="fa fa-sign-out" title="doors"></i> <%=veicolo.get(6)%> &nbsp;&nbsp;&nbsp;
                 </p>
-                <a href="#" data-toggle="modal" data-target="#exampleModal" class="filled-button">Book Now</a>
+                <a href="#" data-toggle="modal" data-target="#exampleModal" class="filled-button" data="<%=veicolo.get(0)%>" id="modalBook">Book Now</a>
                 <p></p>
                 <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2" >Aggiungi ai preferiti</button>
                 <!--creare servlet che aggiunge ai preferiti come cookie. Nella pagina dei preferiti usare una servlet da tramite per stamparli tutti -->
@@ -251,6 +254,8 @@
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="margin-top: 70px;">
       <div class="modal-dialog modal-lg" role="document">
+        <form method="get" action="bookNow">
+          <input type="hidden" value="" id="macchinaId" name="macchinaId">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Book Now</h5>
@@ -259,12 +264,11 @@
             </button>
           </div>
           <div class="modal-body">
-              <form action="#" id="contact">
                   <div class="row">
                    <div class="col-md-6">
                     <div class="form-group">
                       <fieldset>
-                        <input type="text" class="form-control" placeholder="Pick-up location" required="">
+                        <input type="text" class="form-control" placeholder="Pick-up location" name="pick-up-location" required="">
                       </fieldset>
                     </div>
                    </div>
@@ -272,7 +276,7 @@
                    <div class="col-md-6">
                     <div class="form-group">
                       <fieldset>
-                        <input type="text" class="form-control" placeholder="Return location" required="">
+                        <input type="text" class="form-control" placeholder="Return location" name="return-location" required="">
                       </fieldset>
                     </div>
                    </div>
@@ -282,7 +286,7 @@
                    <div class="col-md-6">
                     <div class="form-group">
                       <fieldset>
-                        <input type="text" class="form-control" placeholder="Pick-up date/time" required="">
+                        <input type="text" class="form-control" placeholder="Pick-up date/time" name="pick-up-date" required="">
                       </fieldset>
                     </div>
                    </div>
@@ -290,7 +294,7 @@
                    <div class="col-md-6">
                     <div class="form-group">
                       <fieldset>
-                        <input type="text" class="form-control" placeholder="Return date/time" required="">
+                        <input type="text" class="form-control" placeholder="Return date/time" name="return-date" required="">
                       </fieldset>
                     </div>
                    </div>
@@ -298,7 +302,7 @@
 
                   <div class="form-group">
                     <fieldset>
-                      <input type="text" class="form-control" placeholder="Enter full name" required="">
+                      <input type="text" class="form-control" placeholder="Enter full name" name="full-name" required="">
                     </fieldset>
                   </div>
 
@@ -306,7 +310,7 @@
                    <div class="col-md-6">
                     <div class="form-group">
                       <fieldset>
-                        <input type="text" class="form-control" placeholder="Enter email address" required="">
+                        <input type="text" class="form-control" placeholder="Enter email address" name="email" required="">
                       </fieldset>
                     </div>
                    </div>
@@ -314,18 +318,18 @@
                    <div class="col-md-6">
                     <div class="form-group">
                       <fieldset>
-                        <input type="text" class="form-control" placeholder="Enter phone" required="">
+                        <input type="text" class="form-control" placeholder="Enter phone" name="phone" required="">
                       </fieldset>
                     </div>
                    </div>
                   </div>
-              </form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-            <button type="button" class="btn btn-primary">Book Now</button>
+            <button type="submit" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-primary" id="now">Book Now</button>
           </div>
         </div>
+        </form>
       </div>
     </div>
 
@@ -355,6 +359,13 @@
     -->
 
     <!-- Bootstrap core JavaScript -->
+    <script>
+      $("#now").on("click", function ()
+      {
+        var id = $("#modalBook").attr("data");
+        $("#macchinaId").attr("value", id);
+      })
+    </script>
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 

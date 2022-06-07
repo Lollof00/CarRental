@@ -139,6 +139,32 @@ public class DbOperations {
     }
 
 
+    public Boolean aggiungiOrdine(String inizio, String utente, String fine, String id_macchina, String ret_location, String full_name, String email, String phone, String pick_up_location) throws SQLException
+    {
+        boolean error = false;
+            try{
+
+                Timestamp start = Timestamp.valueOf(inizio);
+                Timestamp end = Timestamp.valueOf(fine);
+                result = connect.getConnection().prepareStatement("INSERT into public.ordini(id,inizio,utente,fine,id_macchina) values (DEFAULT,?,?,?,?,?,?,?,?,?)");
+                result.setTimestamp(1, start);
+                result.setString(2,utente);
+                result.setTimestamp(3, end);
+                result.setInt(4, Integer.parseInt(id_macchina));
+                result.setString(5, ret_location);
+                result.setString(6, full_name);
+                result.setString(7, email);
+                result.setString(8, phone);
+                result.setString(9, pick_up_location);
+                result.executeUpdate();
+            } catch (Exception e){
+                e.printStackTrace();
+            }
+        return error;
+    }
+
+
+
 
 
 }
