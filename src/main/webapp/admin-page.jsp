@@ -93,8 +93,7 @@
             top: 3px;
         }
         table.table .form-control {
-            height: 32px;
-            line-height: 32px;
+
             box-shadow: none;
             border-radius: 2px;
         }
@@ -125,13 +124,8 @@
         <div class="row">
             <div class="col-md-8 col-xs-12">
                 <ul class="left-info">
-                    <li><a href="#"><i class="fa fa-envelope"></i>contact@company.com</a></li>
-                    <li><a href="#"><i class="fa fa-phone"></i>123-456-7890</a></li>
-                </ul>
-            </div>
-            <div class="col-md-4">
-                <ul class="right-icons">
-                    <li><a href="#">Registra nuovo Admin</a></li>
+                    <li><a href="register-admin.jsp">Registra nuovo Admin</a></li>
+                    <li><a href="#">Ordini</a></li>
                 </ul>
             </div>
         </div>
@@ -171,7 +165,6 @@
                     var actions = $("table td:last-child").html();
                     // Append table with add row form on add new button click
                     $(".add-new").click(function(){
-                        alert("coddio")
                         $(this).attr("disabled", "disabled");
                         var index = $("table tbody tr:last-child").index();
                         var row = '<tr>' +
@@ -183,7 +176,7 @@
                             '<td><input type="text" class="form-control" name="passeggeri" id="passeggeri"></td>' +
                             '<td><input type="text" class="form-control" name="porte" id="porte"></td>' +
                             '<td><input type="text" class="form-control" name="bagagli" id="bagagli"></td>' +
-                            '<td><input type="file" class="form-control" name="image" id="image" accept="image/png, image/jpg"></td>' +
+                            '<td><input type="file" class="form-control" name="image" id="image"></td>' +
                             '<td>' + actions + '</td>' +
                             '</tr>';
                         $("table").append(row);
@@ -267,25 +260,27 @@
                                 if(i===8){
                                     var file = $(this).val().replace(/^.*[\\\/]/, '')
                                     toEdit.push(file)
+                                }else {
+                                    toEdit.push($(this).val());
                                 }
-                                toEdit.push($(this).val());
                             });
-                            // TODO gestire la modifica dell'image
                             $.ajax({
                                 type: "POST",
                                 url: "AdminServlet",
                                 dataType: "json",
-                                data: {d:toEdit}
+                                data: {d:toEdit},
                             });
                             $(this).parents("tr").find(".add, .edit").toggle();
                             $(".add-new").removeAttr("disabled");
+                            location.reload()
                         }
                     });
                     // Edit row on edit button click
                     $(document).on("click", ".edit", function(){
                         $(this).parents("tr").find("td:not(:last-child)").each(function(i){
                             if(i===8){
-                                $(this).html('<input type="file" class="form-control">');
+                                var file = $(this).val().replace(/^.*[\\\/]/, '')
+                                $(this).html('<input type="file" class="form-control" value="'+file+'">');
                             }else {
                                 $(this).html('<input type="text" class="form-control" value="' + $(this).text() + '">');
                             }

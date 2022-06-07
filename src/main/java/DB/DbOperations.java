@@ -33,14 +33,13 @@ public class DbOperations {
         } catch (Exception e){
             e.printStackTrace();
         }
+        System.out.println(ruolo);
         return ruolo;
     }
 
-    public boolean Registrazione(String nome, String cognome, String cf, String nascita, String email, String username, String password) throws SQLException {
-        boolean exist = false;
+    public boolean Registrazione(String nome, String cognome, String cf, String nascita, String email, String username, String password,Enum ruolo ) throws SQLException {
+        boolean error = false;
         if(Autenticazione(username,password).equals("")){
-            exist = true;
-        }else{
             try{
 
                 Long datetime = System.currentTimeMillis();
@@ -54,12 +53,15 @@ public class DbOperations {
                 result.setString(6,username);
                 result.setString(7,email);
                 result.setString(8,cf);
+                result.setObject(9,ruolo,Types.OTHER);
                 result.executeUpdate();
             } catch (Exception e){
                 e.printStackTrace();
             }
+        }else {
+            error=true;
         }
-        return exist;
+        return error;
     }
 
     public ArrayList<ArrayList<String>> GetVeicoli(){
@@ -90,8 +92,8 @@ public class DbOperations {
             result.setInt(1, Integer.parseInt(veicoli[0]));
             ResultSet resultSet = result.executeQuery();
             if (resultSet.next()){
-            result = connect.getConnection().prepareStatement("UPDATE public.macchine SET modello=?,produttore=?,targa=?,giornaliero=?,passeggeri=?,porte=?,bagagli=? where id=?");
-            result.setInt(8, Integer.parseInt(veicoli[0]));
+            result = connect.getConnection().prepareStatement("UPDATE public.macchine SET modello=?,produttore=?,targa=?,giornaliero=?,passeggeri=?,porte=?,bagagli=?,image=? where id=?");
+            result.setInt(9, Integer.parseInt(veicoli[0]));
 
             result.setString(1,veicoli[1]);
             result.setInt(2, Integer.parseInt(veicoli[2]));
@@ -100,9 +102,10 @@ public class DbOperations {
             result.setInt(5, Integer.parseInt(veicoli[5]));
             result.setInt(6, Integer.parseInt(veicoli[6]));
             result.setInt(7, Integer.parseInt(veicoli[7]));
+            result.setString(8,veicoli[8]);
             result.executeUpdate();
             }else {
-                result = connect.getConnection().prepareStatement("INSERT into public.macchine(id,modello,produttore,targa,giornaliero,passeggeri,porte,bagagli) values (?,?,?,?,?,?,?,?)");
+                result = connect.getConnection().prepareStatement("INSERT into public.macchine(id,modello,produttore,targa,giornaliero,passeggeri,porte,bagagli,image) values (?,?,?,?,?,?,?,?,?)");
                 result.setInt(1, Integer.parseInt(veicoli[0]));
                 result.setString(2,veicoli[1]);
                 result.setInt(3, Integer.parseInt(veicoli[2]));
@@ -111,6 +114,7 @@ public class DbOperations {
                 result.setInt(6, Integer.parseInt(veicoli[5]));
                 result.setInt(7, Integer.parseInt(veicoli[6]));
                 result.setInt(8, Integer.parseInt(veicoli[7]));
+                result.setString(9, veicoli[8]);
                 result.executeUpdate();
             }
 

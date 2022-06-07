@@ -2,6 +2,7 @@ package AdminServlet;
 
 
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -39,7 +40,7 @@ public class AdminServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String[] data = req.getParameterValues("d[]");
-
+        System.out.println(Arrays.toString(data));
         if(!dbOperations.UpdateVeicoli(data)){
             System.out.println("modifica effettuata");
         }else{
