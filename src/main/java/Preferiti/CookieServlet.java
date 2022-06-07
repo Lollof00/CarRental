@@ -1,5 +1,6 @@
 package Preferiti;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -7,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Objects;
 
 @WebServlet(name = "cookieServlet", value = "/cookieServlet")
 public class CookieServlet extends HttpServlet {
@@ -20,14 +22,19 @@ public class CookieServlet extends HttpServlet {
 
         if(cookies != null && cookies.length != 1) {
             for (int i = 1; i < cookies.length; i++) {
-                if (Integer.parseInt(cookies[i].getValue()) == Integer.parseInt(id)) {
-                    cookies[i].setMaxAge(0);
-                    resp.addCookie(cookies[i]);
+                if (cookies[i].getValue().equals(id)) {
+                    Cookie c = new Cookie(cookies[i].getName(), id);
+                    c.setMaxAge(0);
+                    resp.addCookie(c);
                 }
             }
         }
 
-        resp.sendRedirect("preferiti.jsp");
+
+
+        req.setAttribute("cookies", cookies);
+        RequestDispatcher dispatcher = req.getRequestDispatcher("preferiti.jsp");
+        dispatcher.forward(req, resp);
 
     }
 }
