@@ -29,7 +29,7 @@ public class Login extends HttpServlet {
         try {
             if(dbOperations.Autenticazione(username,password).equals("user")){
                 HttpSession session = req.getSession(true);
-                session.setAttribute("name",username);
+                session.setAttribute("username",username);
                 resp.sendRedirect("index.jsp");
             }else{
                 //TODO messaggo di errore

@@ -34,7 +34,8 @@ public class Book extends HttpServlet {
         String phone = req.getParameter("phone");
 
         try {
-            if(dbOperations.aggiungiOrdine(pick_up_date, )){
+            HttpSession session = req.getSession(false);
+            if(dbOperations.aggiungiOrdine(pick_up_date, session.getAttribute("username"))){
                 HttpSession session = req.getSession(true);
                 resp.sendRedirect("index.jsp");
             }else{
