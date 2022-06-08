@@ -110,15 +110,20 @@
       <div class="container">
         <div class="row">
           <% ArrayList<ArrayList<String>> veicoli = (ArrayList<ArrayList<String>>) request.getAttribute("veicoli");
+          /*
             String pick_location = (String) request.getAttribute("pick_location");
             String drop_location = (String) request.getAttribute("drop_location");
-            try {
-              Date pickUp = new SimpleDateFormat("yyyy-MM-dd").parse((String) request.getAttribute("pick_date"));
-              Date dropOff = new SimpleDateFormat("yyyy-MM-dd").parse((String) request.getAttribute("drop_date"));
-            } catch (ParseException e) {
-              throw new RuntimeException(e);
-            }
-            request.getRequestDispatcher("Book").forward(request, response);
+            Date pickUp = (Date) request.getAttribute("pick_date");
+            Date dropOff = (Date) request.getAttribute("drop_date");
+
+            request.setAttribute("pick_date", pickUp);
+            request.setAttribute("drop_date", dropOff);
+            request.setAttribute("drop_location", drop_location);
+            request.setAttribute("pick_location", pick_location);
+
+
+            request.getRequestDispatcher("bookNow").forward(request, response);
+            */
             for(ArrayList<String> veicolo : veicoli){
           %>
 

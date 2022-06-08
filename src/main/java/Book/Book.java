@@ -25,7 +25,7 @@ public class Book extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         String id_macchina = req.getParameter("macchinaId");
         String full_name = req.getParameter("full-name");
@@ -34,10 +34,13 @@ public class Book extends HttpServlet {
 
         String pick_location = (String) req.getAttribute("pick_location");
         String drop_location = (String) req.getAttribute("drop_location");
+        String pick_date = (String) req.getAttribute("pick_date");
+        String drop_date = (String) req.getAttribute("drop_date");
 
         try {
-            Date pickUp = new SimpleDateFormat("yyyy-MM-dd").parse((String) req.getAttribute("pick_date"));
-            Date dropOff = new SimpleDateFormat("yyyy-MM-dd").parse((String) req.getAttribute("drop_date"));
+
+            Date pickUp = new SimpleDateFormat("yyyy-MM-dd").parse(pick_date);
+            Date dropOff = new SimpleDateFormat("yyyy-MM-dd").parse(drop_date);
             HttpSession session = req.getSession(false);
             if(!dbOperations.aggiungiOrdine((java.sql.Date) pickUp, (String) session.getAttribute("username"), (java.sql.Date) dropOff, id_macchina, drop_location, full_name, email, phone, pick_location)){
                 resp.sendRedirect("index.jsp");
