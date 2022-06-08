@@ -2,11 +2,13 @@ package FilterCars;
 
 import DB.DbOperations;
 
+import javax.mail.Session;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -30,11 +32,12 @@ public class FilterCar extends HttpServlet {
             Date pickUp = new SimpleDateFormat("yyyy-MM-dd").parse(req.getParameter("pickUp"));
             Date dropOff = new SimpleDateFormat("yyyy-MM-dd").parse(req.getParameter("dropOff"));
             ArrayList<ArrayList<String>> veicoliDisponibili = dbOperations.getAvailableVeicoli(pickUp,dropOff);
+            HttpSession session = req.getSession(true);
             req.setAttribute("veicoli", veicoliDisponibili);
-            req.setAttribute("pick_location", pick_location);
-            req.setAttribute("drop_location", drop_location);
-            req.setAttribute("pick_date", pickUp);
-            req.setAttribute("drop_date", dropOff);
+            session.setAttribute("pick_location", pick_location);
+            session.setAttribute("drop_location", drop_location);
+            session.setAttribute("pick_date", pickUp);
+            session.setAttribute("drop_date", dropOff);
             req.getRequestDispatcher("fleet.jsp").forward(req, resp);
         } catch (ParseException e) {
             throw new RuntimeException(e);

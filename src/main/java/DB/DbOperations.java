@@ -174,11 +174,13 @@ public class DbOperations {
 
 
             Set<Integer> idCartoNotInclude = new HashSet<>();
-            while(resultSet.next()){
-                String inzio = resultSet.getString("inizio");
-                String fine = resultSet.getString("fine");
-                if(((pickUp.after(new SimpleDateFormat("yyyy-MM-dd").parse(inzio))||pickUp.equals(new SimpleDateFormat("yyyy-MM-dd").parse(inzio))) && (dropOff.before(new SimpleDateFormat("yyyy-MM-dd").parse(fine))||dropOff.equals(new SimpleDateFormat("yyyy-MM-dd").parse(fine)))) || ((pickUp.before(new SimpleDateFormat("yyyy-MM-dd").parse(inzio))||pickUp.equals(new SimpleDateFormat("yyyy-MM-dd").parse(inzio))) && dropOff.before(new SimpleDateFormat("yyyy-MM-dd").parse(fine)))){
-                    idCartoNotInclude.add(resultSet.getInt("id_macchina"));
+            if (resultSet.next()) {
+                while (resultSet.next()) {
+                    String inzio = resultSet.getString("inizio");
+                    String fine = resultSet.getString("fine");
+                    if (((pickUp.after(new SimpleDateFormat("yyyy-MM-dd").parse(inzio)) || pickUp.equals(new SimpleDateFormat("yyyy-MM-dd").parse(inzio))) && (dropOff.before(new SimpleDateFormat("yyyy-MM-dd").parse(fine)) || dropOff.equals(new SimpleDateFormat("yyyy-MM-dd").parse(fine)))) || ((pickUp.before(new SimpleDateFormat("yyyy-MM-dd").parse(inzio)) || pickUp.equals(new SimpleDateFormat("yyyy-MM-dd").parse(inzio))) && dropOff.before(new SimpleDateFormat("yyyy-MM-dd").parse(fine)))) {
+                        idCartoNotInclude.add(resultSet.getInt("id_macchina"));
+                    }
                 }
             }
 

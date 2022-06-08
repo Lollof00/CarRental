@@ -110,20 +110,6 @@
       <div class="container">
         <div class="row">
           <% ArrayList<ArrayList<String>> veicoli = (ArrayList<ArrayList<String>>) request.getAttribute("veicoli");
-          /*
-            String pick_location = (String) request.getAttribute("pick_location");
-            String drop_location = (String) request.getAttribute("drop_location");
-            Date pickUp = (Date) request.getAttribute("pick_date");
-            Date dropOff = (Date) request.getAttribute("drop_date");
-
-            request.setAttribute("pick_date", pickUp);
-            request.setAttribute("drop_date", dropOff);
-            request.setAttribute("drop_location", drop_location);
-            request.setAttribute("pick_location", pick_location);
-
-
-            request.getRequestDispatcher("bookNow").forward(request, response);
-            */
             for(ArrayList<String> veicolo : veicoli){
           %>
 
@@ -224,7 +210,7 @@
           <div class="col-md-3 footer-item last-item">
             <h4>Contact Us</h4>
             <div class="contact-form">
-              <form id="contact footer-contact" action="" method="post">
+              <form id="contact footer-contact" action="" method="get">
                 <div class="row">
                   <div class="col-lg-12 col-md-12 col-sm-12">
                     <fieldset>
@@ -257,12 +243,6 @@
     <div class="sub-footer">
       <div class="container">
         <div class="row">
-          <div class="col-md-12">
-            <p>
-                Copyright © 2020 Company Name
-                - Template by: <a href="https://www.phpjabbers.com/">PHPJabbers.com</a>
-            </p>
-          </div>
         </div>
       </div>
     </div>

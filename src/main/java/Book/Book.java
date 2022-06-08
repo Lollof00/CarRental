@@ -25,35 +25,30 @@ public class Book extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession();
 
         String id_macchina = req.getParameter("macchinaId");
         String full_name = req.getParameter("full-name");
         String email = req.getParameter("email");
         String phone = req.getParameter("phone");
 
-        String pick_location = (String) req.getAttribute("pick_location");
-        String drop_location = (String) req.getAttribute("drop_location");
-        String pick_date = (String) req.getAttribute("pick_date");
-        String drop_date = (String) req.getAttribute("drop_date");
+        String pick_location = (String) session.getAttribute("pick_location");
+        String drop_location = (String) session.getAttribute("drop_location");
+        Date pick_date = (Date) session.getAttribute("pick_date");
+        Date drop_date = (Date) session.getAttribute("drop_date");
+
 
         try {
 
-            Date pickUp = new SimpleDateFormat("yyyy-MM-dd").parse(pick_date);
-            Date dropOff = new SimpleDateFormat("yyyy-MM-dd").parse(drop_date);
-            HttpSession session = req.getSession(false);
-            if(!dbOperations.aggiungiOrdine((java.sql.Date) pickUp, (String) session.getAttribute("username"), (java.sql.Date) dropOff, id_macchina, drop_location, full_name, email, phone, pick_location)){
+            if(!dbOperations.aggiungiOrdine(new java.sql.Date(pick_date.getTime()), (String) session.getAttribute("username"),  new java.sql.Date(drop_date.getTime()), id_macchina, drop_location, full_name, email, phone, pick_location)){
                 resp.sendRedirect("index.jsp");
             }else {
-
+                    //TODO messaggio d'errore
             }
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
-
 
 
     }
