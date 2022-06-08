@@ -17,11 +17,12 @@ public class EmailUtility {
         properties.put("mail.smtp.socketFactory.port",465);
         properties.put("mail.smtp.socketFactory.class", SSL_FACTORY);
         properties.put("mail.smtp.socketFactory.fallback", "false");
+        properties.put("mail.smtp.starttls.enable", "true");
     }
 
     public static void sendMail(EmailMessage emailMessage){
-        String sender_email="carrentalsapienza@gmail.com";
-        String sender_email_pass = "lollomic00";
+        String sender_email="carrentalSapienza@gmail.com";
+        String sender_email_pass = "xogshhydmxlyvrpv";
         try {
             Session session = Session.getDefaultInstance(properties,new javax.mail.Authenticator(){
                 protected PasswordAuthentication getPasswordAuthentication(){

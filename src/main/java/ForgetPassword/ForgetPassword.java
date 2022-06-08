@@ -24,7 +24,8 @@ public class ForgetPassword extends HttpServlet {
         String password = dbOperations.getUserEmail(email);
         EmailMessage emailBean = new EmailMessage();
         emailBean.setTo(email);
-        emailBean.setMessage("Ciaoo "+email+"La tua password è: "+password);
+        emailBean.setSubject("Recupero Password");
+        emailBean.setMessage("Ciaoo "+email+" La tua password è: "+password);
         try {
             EmailUtility.sendMail(emailBean);
         } catch (Exception e) {
