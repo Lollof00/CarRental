@@ -48,7 +48,7 @@
                    Non hai un account?<a href="register.jsp">Registrati</a>
                 </div>
                 <div class="d-flex justify-content-center">
-                    <a href="#">Hai dimenticato la password?</a>
+                    <a href="forgotPassword.jsp">Hai dimenticato la password?</a>
                 </div>
                 <div class="d-flex justify-content-center">
                     <a href="login-admin.jsp">Sei un amministratore?</a>
