@@ -1,8 +1,13 @@
 package DB;
 
 import java.sql.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Locale;
+import java.util.Set;
+
 
 public class DbOperations {
     private PreparedStatement result;
@@ -161,6 +166,45 @@ public class DbOperations {
                 e.printStackTrace();
             }
         return error;
+    }
+
+    public ArrayList<ArrayList<String>> getAvailableVeicoli(java.util.Date pickUp, java.util.Date dropOff){
+        ArrayList<ArrayList<String>> veicoliDisponibili = new ArrayList<>();
+        try {
+            result = connect.getConnection().prepareStatement("SELECT inizio,fine,id_macchina from public.ordini");
+            ResultSet resultSet = result.executeQuery();
+            ResultSetMetaData rsmd = resultSet.getMetaData();
+
+
+            Set<Integer> idCartoNotInclude = new HashSet<>();
+            while(resultSet.next()){
+                String inzio = resultSet.getString("inizio");
+                String fine = resultSet.getString("fine");
+                if(((pickUp.after(new SimpleDateFormat("yyyy-MM-dd").parse(inzio))||pickUp.equals(new SimpleDateFormat("yyyy-MM-dd").parse(inzio))) && (dropOff.before(new SimpleDateFormat("yyyy-MM-dd").parse(fine))||dropOff.equals(new SimpleDateFormat("yyyy-MM-dd").parse(fine)))) || ((pickUp.before(new SimpleDateFormat("yyyy-MM-dd").parse(inzio))||pickUp.equals(new SimpleDateFormat("yyyy-MM-dd").parse(inzio))) && dropOff.before(new SimpleDateFormat("yyyy-MM-dd").parse(fine)))){
+                    idCartoNotInclude.add(resultSet.getInt("id_macchina"));
+                }
+            }
+
+            result = connect.getConnection().prepareStatement("SELECT * from public.macchine");
+            ResultSet resultSet2 = result.executeQuery();
+            ResultSetMetaData rsmd2 = resultSet2.getMetaData();
+
+            int numCols= rsmd2.getColumnCount();
+            while(resultSet2.next()){
+                ArrayList<String> riga = new ArrayList<>();
+                if(!idCartoNotInclude.contains(resultSet2.getInt("id"))) {
+                    for (int i = 1; i <= numCols; i++) {
+                        riga.add(resultSet2.getString(i));
+                    }
+                    veicoliDisponibili.add(riga);
+                }
+            }
+
+        } catch (SQLException | ParseException e) {
+            throw new RuntimeException(e);
+        }
+
+        return veicoliDisponibili;
     }
 
 

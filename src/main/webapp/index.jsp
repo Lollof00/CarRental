@@ -124,8 +124,7 @@
         </div>
     </div>
     <!-- Banner Ends Here -->
-
-
+    <form action="FilterCar" method="post">
     <div class="container-fluid bg-white pt-3 px-lg-5">
       <div class="row mx-n2">
         <div class="col-xl-2 col-lg-4 col-md-6 px-2">
@@ -147,13 +146,13 @@
         <div class="col-xl-2 col-lg-4 col-md-6 px-2">
           <div class="date mb-3" id="date" data-target-input="nearest">
             <input type="date" class="form-control p-4 datetimepicker-input" placeholder="Pickup Date"
-                   data-target="#date" data-toggle="datetimepicker" />
+                   data-target="#date" data-toggle="datetimepicker" name="pickUp"/>
           </div>
         </div>
         <div class="col-xl-2 col-lg-4 col-md-6 px-2">
           <div class="time mb-3" id="time" data-target-input="nearest">
-            <input type="date" class="form-control p-4 datetimepicker-input" placeholder="Pickup Time"
-                   data-target="#time" data-toggle="datetimepicker" />
+            <input type="date" class="form-control p-4 datetimepicker-input" placeholder="Drop Off"
+                   data-target="#time" data-toggle="datetimepicker" name="dropOff" />
           </div>
         </div>
         <div class="col-xl-2 col-lg-4 col-md-6 px-2">
@@ -161,6 +160,7 @@
         </div>
       </div>
     </div>
+    </form>
 
     <div class="testimonials">
       <div class="container">
