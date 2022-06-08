@@ -110,7 +110,6 @@
       <% ArrayList<ArrayList<String>> veicoli = (ArrayList<ArrayList<String>>) request.getAttribute("veicoli");
         for(ArrayList<String> veicolo : veicoli){
       %>
-
       <div class="col-md-4" id="col">
         <form action="preferiti" method="post">
           <div class="service-item">

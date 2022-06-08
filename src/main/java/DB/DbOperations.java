@@ -38,7 +38,6 @@ public class DbOperations {
         } catch (Exception e){
             e.printStackTrace();
         }
-        System.out.println(ruolo);
         return ruolo;
     }
 
@@ -206,9 +205,29 @@ public class DbOperations {
     }
 
 
+    public String getUserEmail(String email){
+        String password ="";
+        try {
+            result = connect.getConnection().prepareStatement("SELECT email,password from public.utenti where email=?");
+            result.setString(1,email);
+            ResultSet resultSet = result.executeQuery();
 
 
+            if (resultSet.next()){
+                //TEST
+                password = resultSet.getString("password");
+                System.out.println("esiste");
+            }else{
+                //TEST
+                System.out.println("non esiste");
+            }
 
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return password;
+    }
 }
 
 
