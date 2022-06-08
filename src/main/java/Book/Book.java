@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 @WebServlet(name = "bookNow", value = "/bookNow")
@@ -25,26 +28,30 @@ public class Book extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         String id_macchina = req.getParameter("macchinaId");
-        String pick_up_location = req.getParameter("pick-up-location");
-        String ret_location = req.getParameter("return-location");
-        String pick_up_date = req.getParameter("pick-up-date");
-        String ret_date = req.getParameter("return-date");
         String full_name = req.getParameter("full-name");
         String email = req.getParameter("email");
         String phone = req.getParameter("phone");
 
-      /*  try {
+        String pick_location = (String) req.getAttribute("pick_location");
+        String drop_location = (String) req.getAttribute("drop_location");
+
+        try {
+            Date pickUp = new SimpleDateFormat("yyyy-MM-dd").parse((String) req.getAttribute("pick_date"));
+            Date dropOff = new SimpleDateFormat("yyyy-MM-dd").parse((String) req.getAttribute("drop_date"));
             HttpSession session = req.getSession(false);
-            if(dbOperations.aggiungiOrdine(pick_up_date, session.getAttribute("username"))){
+            if(!dbOperations.aggiungiOrdine((java.sql.Date) pickUp, (String) session.getAttribute("username"), (java.sql.Date) dropOff, id_macchina, drop_location, full_name, email, phone, pick_location)){
                 resp.sendRedirect("index.jsp");
-            }else{
-                //TODO messaggo di errore
-            };
+            }else {
+
+            }
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
-       */
+
+
 
     }
 }

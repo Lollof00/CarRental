@@ -143,23 +143,21 @@ public class DbOperations {
     }
 
 
-    public Boolean aggiungiOrdine(String inizio, String utente, String fine, String id_macchina, String ret_location, String full_name, String email, String phone, String pick_up_location) throws SQLException
+    public Boolean aggiungiOrdine(Date inizio, String utente, Date fine, String id_macchina, String ret_location, String full_name, String email, String phone, String pick_up_location) throws SQLException
     {
         boolean error = false;
             try{
 
-                Timestamp start = Timestamp.valueOf(inizio);
-                Timestamp end = Timestamp.valueOf(fine);
-                result = connect.getConnection().prepareStatement("INSERT into public.ordini(id,inizio,utente,fine,id_macchina) values (DEFAULT,?,?,?,?,?,?,?,?,?)");
-                result.setTimestamp(1, start);
-                result.setString(2,utente);
-                result.setTimestamp(3, end);
-                result.setInt(4, Integer.parseInt(id_macchina));
-                result.setString(5, ret_location);
-                result.setString(6, full_name);
-                result.setString(7, email);
-                result.setString(8, phone);
-                result.setString(9, pick_up_location);
+                result = connect.getConnection().prepareStatement("INSERT into public.ordini(id,id_macchina,return_location,full_name,email,phone,pick_up_location,inizio,fine,utente) values (DEFAULT,?,?,?,?,?,?,?,?,?)");
+                result.setInt(1, Integer.parseInt(id_macchina));
+                result.setString(2,ret_location);
+                result.setString(3, full_name);
+                result.setString(4, email);
+                result.setString(5, phone);
+                result.setString(6, pick_up_location);
+                result.setDate(7, inizio);
+                result.setDate(8, fine);
+                result.setString(9, utente);
                 result.executeUpdate();
             } catch (Exception e){
                 e.printStackTrace();

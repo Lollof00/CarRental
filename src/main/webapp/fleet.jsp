@@ -1,6 +1,9 @@
 <%@ page import="DB.DbOperations" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.io.IOException" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.text.ParseException" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -106,38 +109,46 @@
     <div class="services">
       <div class="container">
         <div class="row">
-          <% DbOperations operations = new DbOperations();
-            ArrayList<ArrayList<String>> veicoli = operations.GetVeicoli();
+          <% ArrayList<ArrayList<String>> veicoli = (ArrayList<ArrayList<String>>) request.getAttribute("veicoli");
+            String pick_location = (String) request.getAttribute("pick_location");
+            String drop_location = (String) request.getAttribute("drop_location");
+            try {
+              Date pickUp = new SimpleDateFormat("yyyy-MM-dd").parse((String) request.getAttribute("pick_date"));
+              Date dropOff = new SimpleDateFormat("yyyy-MM-dd").parse((String) request.getAttribute("drop_date"));
+            } catch (ParseException e) {
+              throw new RuntimeException(e);
+            }
+            request.getRequestDispatcher("Book").forward(request, response);
             for(ArrayList<String> veicolo : veicoli){
           %>
 
           <div class="col-md-4" id="col">
             <form action="preferiti" method="post">
-            <div class="service-item">
-              <img class="immagine" src="carImage/<%=veicolo.get(8)%>" width="200" height="200">
-              <div class="down-content">
-                <input type="hidden" name="id" value="<%=veicolo.get(0)%>">
-                <h4><%=veicolo.get(1)%></h4>
-                <div style="margin-bottom:10px;">
-                  <span>from <sup>$</sup><%=veicolo.get(4)%> per weekend</span>
-                </div>
-                <p>
-                  <i class="fa fa-user" title="passegengers"></i> <%=veicolo.get(5)%> &nbsp;&nbsp;&nbsp;
-                  <i class="fa fa-briefcase" title="luggages"></i> <%=veicolo.get(7)%> &nbsp;&nbsp;&nbsp;
-                  <i class="fa fa-sign-out" title="doors"></i> <%=veicolo.get(6)%> &nbsp;&nbsp;&nbsp;
-                </p>
-                <a href="#" data-toggle="modal" data-target="#exampleModal" class="filled-button" data="<%=veicolo.get(0)%>" id="modalBook">Book Now</a>
-                <p></p>
-                <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2" >Aggiungi ai preferiti</button>
+              <div class="service-item">
+                <img class="immagine" src="carImage/<%=veicolo.get(8)%>" width="200" height="200">
+                <div class="down-content">
+                  <input type="hidden" name="id" value="<%=veicolo.get(0)%>">
+                  <h4><%=veicolo.get(1)%></h4>
+                  <div style="margin-bottom:10px;">
+                    <span>from <sup>$</sup><%=veicolo.get(4)%> per weekend</span>
+                  </div>
+                  <p>
+                    <i class="fa fa-user" title="passegengers"></i> <%=veicolo.get(5)%> &nbsp;&nbsp;&nbsp;
+                    <i class="fa fa-briefcase" title="luggages"></i> <%=veicolo.get(7)%> &nbsp;&nbsp;&nbsp;
+                    <i class="fa fa-sign-out" title="doors"></i> <%=veicolo.get(6)%> &nbsp;&nbsp;&nbsp;
+                  </p>
+                  <a href="#" data-toggle="modal" data-target="#exampleModal" class="filled-button" data="<%=veicolo.get(0)%>" id="modalBook">Book Now</a>
+                  <p></p>
+                  <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2" >Aggiungi ai preferiti</button>
 
+                </div>
               </div>
-            </div>
             </form>
             <br>
           </div>
 
 
-            <br>
+          <br>
           <%}%>
           </div>
         </div>
@@ -264,41 +275,6 @@
             </button>
           </div>
           <div class="modal-body">
-                  <div class="row">
-                   <div class="col-md-6">
-                    <div class="form-group">
-                      <fieldset>
-                        <input type="text" class="form-control" placeholder="Pick-up location" name="pick-up-location" required="">
-                      </fieldset>
-                    </div>
-                   </div>
-
-                   <div class="col-md-6">
-                    <div class="form-group">
-                      <fieldset>
-                        <input type="text" class="form-control" placeholder="Return location" name="return-location" required="">
-                      </fieldset>
-                    </div>
-                   </div>
-                  </div>
-
-                  <div class="row">
-                   <div class="col-md-6">
-                    <div class="form-group">
-                      <fieldset>
-                        <input type="text" class="form-control" placeholder="Pick-up date/time" name="pick-up-date" required="">
-                      </fieldset>
-                    </div>
-                   </div>
-
-                   <div class="col-md-6">
-                    <div class="form-group">
-                      <fieldset>
-                        <input type="text" class="form-control" placeholder="Return date/time" name="return-date" required="">
-                      </fieldset>
-                    </div>
-                   </div>
-                  </div>
 
                   <div class="form-group">
                     <fieldset>
