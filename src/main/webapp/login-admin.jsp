@@ -38,21 +38,10 @@
                         </div>
                         <input type="password" class="form-control" placeholder="password" name="password">
                     </div>
-                    <div class="row align-items-center remember">
-                        <input type="checkbox">Ricordami
-                    </div>
                     <div class="form-group">
                         <input type="submit" value="Login" class="btn float-right login_btn">
                     </div>
                 </form>
-            </div>
-            <div class="card-footer">
-                <div class="d-flex justify-content-center links">
-                    Non hai un account?<a href="register.jsp">Registrati</a>
-                </div>
-                <div class="d-flex justify-content-center">
-                    <a href="#">Hai dimenticato la password?</a>
-                </div>
             </div>
         </div>
     </div>

@@ -38,16 +38,10 @@
         <div class="row">
           <div class="col-md-8 col-xs-12">
             <ul class="left-info">
-              <li><a href="#"><i class="fa fa-envelope"></i>contact@company.com</a></li>
-              <li><a href="#"><i class="fa fa-phone"></i>123-456-7890</a></li>
+              <h1><%=session.getAttribute("username")%></h1>
             </ul>
           </div>
           <div class="col-md-4">
-            <ul class="right-icons">
-              <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-              <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-            </ul>
           </div>
         </div>
       </div>
@@ -56,7 +50,7 @@
     <header class="">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <a class="navbar-brand" href="index.jsp"><h2>Car Rental<em> Website</em></h2></a>
+          <a class="navbar-brand" href="index.jsp"><h2>Car Rental</h2></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -131,20 +125,42 @@
     </div>
     <!-- Banner Ends Here -->
 
-    <div class="request-form">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-8">
-            <h4>Request a call back right now ?</h4>
-            <span>Mauris ut dapibus velit cras interdum nisl ac urna tempor mollis.</span>
+
+    <div class="container-fluid bg-white pt-3 px-lg-5">
+      <div class="row mx-n2">
+        <div class="col-xl-2 col-lg-4 col-md-6 px-2">
+          <select class="custom-select px-4 mb-3" style="height: 50px;">
+            <option selected>Pickup Location</option>
+            <option value="1">Location 1</option>
+            <option value="2">Location 2</option>
+            <option value="3">Location 3</option>
+          </select>
+        </div>
+        <div class="col-xl-2 col-lg-4 col-md-6 px-2">
+          <select class="custom-select px-4 mb-3" style="height: 50px;">
+            <option selected>Drop Location</option>
+            <option value="1">Location 1</option>
+            <option value="2">Location 2</option>
+            <option value="3">Location 3</option>
+          </select>
+        </div>
+        <div class="col-xl-2 col-lg-4 col-md-6 px-2">
+          <div class="date mb-3" id="date" data-target-input="nearest">
+            <input type="date" class="form-control p-4 datetimepicker-input" placeholder="Pickup Date"
+                   data-target="#date" data-toggle="datetimepicker" />
           </div>
-          <div class="col-md-4">
-            <a href="contact.jsp" class="border-button">Contact Us</a>
+        </div>
+        <div class="col-xl-2 col-lg-4 col-md-6 px-2">
+          <div class="time mb-3" id="time" data-target-input="nearest">
+            <input type="date" class="form-control p-4 datetimepicker-input" placeholder="Pickup Time"
+                   data-target="#time" data-toggle="datetimepicker" />
           </div>
+        </div>
+        <div class="col-xl-2 col-lg-4 col-md-6 px-2">
+          <button class="btn btn-primary btn-block mb-3" type="submit" style="height: 50px;">Cerca</button>
         </div>
       </div>
     </div>
-
 
     <div class="testimonials">
       <div class="container">
