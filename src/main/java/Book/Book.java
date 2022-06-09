@@ -29,6 +29,7 @@ public class Book extends HttpServlet {
         HttpSession session = req.getSession();
 
         String id_macchina = req.getParameter("macchinaId");
+        System.out.println(id_macchina);
         String full_name = req.getParameter("full-name");
         String email = req.getParameter("email");
         String phone = req.getParameter("phone");

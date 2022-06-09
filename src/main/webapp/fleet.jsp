@@ -294,38 +294,17 @@
       </div>
     </div>
 
-    <!-- Modal
-    <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="margin-top: 70px;">
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-          <form>
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel2">Preferiti</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            La macchina e' stata aggiunta ai preferiti.
-          </div>
-          <div class="modal-footer">
-            <button type="submit" class="btn btn-secondary" data-dismiss="modal">Chiudi</button>
-            <button type="submit" class="btn btn-primary">Vai ai preferiti</button>
-          </div>
-          </form>
-        </div>
-      </div>
-    </div>
-    ciao
-
-    -->
 
     <!-- Bootstrap core JavaScript -->
     <script>
-      $("#now").on("click", function ()
-      {
-        var id = $("#modalBook").attr("data");
-        $("#macchinaId").attr("value", id);
+      $(document).ready(function() {
+        $(".filled-button").on("click", function () {
+          var id = $(this).attr("data");
+          alert(id)
+          $("#now").on("click", function () {
+            $("#macchinaId").attr("value", id);
+          })
+        })
       })
     </script>
     <script src="vendor/jquery/jquery.min.js"></script>

@@ -203,7 +203,7 @@ public class DbOperations {
         {
             throw new RuntimeException(e);
         }
-
+        System.out.println(veicoliOrdinati);
         return veicoliOrdinati;
     }
 

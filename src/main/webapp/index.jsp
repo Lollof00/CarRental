@@ -38,7 +38,7 @@
         <div class="row">
           <div class="col-md-8 col-xs-12">
             <ul class="left-info">
-              <h1><%=session.getAttribute("username")%></h1>
+              <h1 class="navbar-brand"><%=session.getAttribute("username")%></h1>
             </ul>
           </div>
           <div class="col-md-4">
@@ -74,6 +74,9 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="contact.jsp">Contact Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="logout">Logout</a>
               </li>
             </ul>
           </div>
