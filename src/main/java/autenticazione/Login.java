@@ -23,6 +23,10 @@ public class Login extends HttpServlet {
     }
 
     @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+       req.getRequestDispatcher("login-user.jsp").forward(req,resp);
+    }
+    @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
@@ -30,13 +34,13 @@ public class Login extends HttpServlet {
             if(dbOperations.Autenticazione(username,password).equals("user")){
                 HttpSession session = req.getSession(true);
                 session.setAttribute("username",username);
-                resp.sendRedirect("index.jsp");
+                resp.sendRedirect("home/index.jsp");
             }else{
                 //TODO messaggo di errore
             };
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
     }
+
 }

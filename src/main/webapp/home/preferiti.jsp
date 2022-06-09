@@ -1,6 +1,10 @@
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="DB.DbOperations" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<%@ page import="DB.DbOperations" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.io.IOException" %>
+<%@ page import="java.util.Arrays" %>
+<%@ page import="java.util.Objects" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,18 +19,18 @@
     <title>PHPJabbers.com | Free Car Rental Website Template</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="assets/css/fontawesome.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/owl.css">
-
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-
+    <link rel="stylesheet" href="../assets/css/fontawesome.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/owl.css">
 </head>
 
 <body>
+
+<% Cookie cookie[] = request.getCookies();%>
+
 
 <!-- ***** Preloader Start ***** -->
 <div id="preloader">
@@ -72,7 +76,7 @@
                         </a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="miei-ordini.jsp.jsp">Fleet</a>
+                        <a class="nav-link" href="fleet.jsp">Fleet</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">About</a>
@@ -106,15 +110,22 @@
 <div class="services">
     <div class="container">
         <div class="row">
-            <% DbOperations dbOperations = new DbOperations();
-                ArrayList<ArrayList<String>> veicoli = dbOperations.getOrdiniUtente((String) session.getAttribute("username"));
+            <%
+                if(cookie != null && cookie.length > 1){
+                DbOperations operations = new DbOperations();
+                ArrayList<ArrayList<String>> veicoli = operations.GetVeicoli();
                 for(ArrayList<String> veicolo : veicoli){
+                    for (int i = 1; i < cookie.length; i++)
+                    {
+                        if(!Objects.equals(cookie[i].getName(), "JSESSIONID")){
+                        if (Integer.parseInt(veicolo.get(0)) == Integer.parseInt(cookie[i].getValue()))
+                        {
             %>
 
             <div class="col-md-4" id="col">
-                <form action="preferiti" method="post">
+                <form action="${pageContext.request.contextPath}/cookieServlet" method="get">
                     <div class="service-item">
-                        <img class="immagine" src="carImage/<%=veicolo.get(8)%>" width="200" height="200">
+                        <img class="immagine" src="../carImage/<%=veicolo.get(8)%>" width="200" height="200">
                         <div class="down-content">
                             <input type="hidden" name="id" value="<%=veicolo.get(0)%>">
                             <h4><%=veicolo.get(1)%></h4>
@@ -126,7 +137,8 @@
                                 <i class="fa fa-briefcase" title="luggages"></i> <%=veicolo.get(7)%> &nbsp;&nbsp;&nbsp;
                                 <i class="fa fa-sign-out" title="doors"></i> <%=veicolo.get(6)%> &nbsp;&nbsp;&nbsp;
                             </p>
-
+                            <button type="submit" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal2" >Elimina</button>
+                            <!--creare servlet che aggiunge ai preferiti come cookie. Nella pagina dei preferiti usare una servlet da tramite per stamparli tutti -->
                         </div>
                     </div>
                 </form>
@@ -135,7 +147,11 @@
 
 
             <br>
-            <%}%>
+            <%               }
+                        }
+                    }
+                }
+            }%>
         </div>
     </div>
 
@@ -205,7 +221,7 @@
             <div class="col-md-3 footer-item last-item">
                 <h4>Contact Us</h4>
                 <div class="contact-form">
-                    <form id="contact footer-contact" action="" method="get">
+                    <form id="contact footer-contact" action="" method="post">
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12">
                                 <fieldset>
@@ -238,6 +254,12 @@
 <div class="sub-footer">
     <div class="container">
         <div class="row">
+            <div class="col-md-12">
+                <p>
+                    Copyright © 2020 Company Name
+                    - Template by: <a href="https://www.phpjabbers.com/">PHPJabbers.com</a>
+                </p>
+            </div>
         </div>
     </div>
 </div>
@@ -245,20 +267,54 @@
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="margin-top: 70px;">
     <div class="modal-dialog modal-lg" role="document">
-        <form method="get" action="bookNow">
-            <input type="hidden" value="" id="macchinaId" name="macchinaId">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Book Now</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Book Now</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="#" id="contact">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <fieldset>
+                                    <input type="text" class="form-control" placeholder="Pick-up location" required="">
+                                </fieldset>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <fieldset>
+                                    <input type="text" class="form-control" placeholder="Return location" required="">
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <fieldset>
+                                    <input type="text" class="form-control" placeholder="Pick-up date/time" required="">
+                                </fieldset>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <fieldset>
+                                    <input type="text" class="form-control" placeholder="Return date/time" required="">
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="form-group">
                         <fieldset>
-                            <input type="text" class="form-control" placeholder="Enter full name" name="full-name" required="">
+                            <input type="text" class="form-control" placeholder="Enter full name" required="">
                         </fieldset>
                     </div>
 
@@ -266,7 +322,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <fieldset>
-                                    <input type="text" class="form-control" placeholder="Enter email address" name="email" required="">
+                                    <input type="text" class="form-control" placeholder="Enter email address" required="">
                                 </fieldset>
                             </div>
                         </div>
@@ -274,18 +330,18 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <fieldset>
-                                    <input type="text" class="form-control" placeholder="Enter phone" name="phone" required="">
+                                    <input type="text" class="form-control" placeholder="Enter phone" required="">
                                 </fieldset>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-primary" id="now">Book Now</button>
-                </div>
+                </form>
             </div>
-        </form>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary">Book Now</button>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -311,26 +367,18 @@
     </div>
   </div>
 </div>
-ciao
 
 -->
 
 <!-- Bootstrap core JavaScript -->
-<script>
-    $("#now").on("click", function ()
-    {
-        var id = $("#modalBook").attr("data");
-        $("#macchinaId").attr("value", id);
-    })
-</script>
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <!-- Additional Scripts -->
-<script src="assets/js/custom.js"></script>
-<script src="assets/js/owl.js"></script>
-<script src="assets/js/slick.js"></script>
-<script src="assets/js/accordions.js"></script>
+<script src="../assets/js/custom.js"></script>
+<script src="../assets/js/owl.js"></script>
+<script src="../assets/js/slick.js"></script>
+<script src="../assets/js/accordions.js"></script>
 
 <script language = "text/Javascript">
     cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field

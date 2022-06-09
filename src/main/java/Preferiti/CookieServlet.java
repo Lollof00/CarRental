@@ -30,6 +30,6 @@ public class CookieServlet extends HttpServlet {
                 }
             }
         }
-        resp.sendRedirect("preferiti.jsp");
+        resp.sendRedirect("home/preferiti.jsp");
     }
 }

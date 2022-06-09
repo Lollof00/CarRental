@@ -24,6 +24,7 @@ public class FilterCar extends HttpServlet {
         dbOperations= new DbOperations();
     }
 
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
@@ -33,12 +34,12 @@ public class FilterCar extends HttpServlet {
             Date dropOff = new SimpleDateFormat("yyyy-MM-dd").parse(req.getParameter("dropOff"));
             ArrayList<ArrayList<String>> veicoliDisponibili = dbOperations.getAvailableVeicoli(pickUp,dropOff);
             HttpSession session = req.getSession(true);
-            req.setAttribute("veicoli", veicoliDisponibili);
+            session.setAttribute("veicoli", veicoliDisponibili);
             session.setAttribute("pick_location", pick_location);
             session.setAttribute("drop_location", drop_location);
             session.setAttribute("pick_date", pickUp);
             session.setAttribute("drop_date", dropOff);
-            req.getRequestDispatcher("fleet.jsp").forward(req, resp);
+            resp.sendRedirect("home/fleet.jsp");
         } catch (ParseException e) {
             throw new RuntimeException(e);
         }

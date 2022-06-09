@@ -43,7 +43,7 @@ public class Book extends HttpServlet {
         try {
 
             if(!dbOperations.aggiungiOrdine(new java.sql.Date(pick_date.getTime()), (String) session.getAttribute("username"),  new java.sql.Date(drop_date.getTime()), id_macchina, drop_location, full_name, email, phone, pick_location)){
-                resp.sendRedirect("index.jsp");
+                resp.sendRedirect("home/index.jsp");
             }else {
                     //TODO messaggio d'errore
             }

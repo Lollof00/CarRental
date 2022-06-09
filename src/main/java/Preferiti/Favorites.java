@@ -24,7 +24,7 @@ public class Favorites extends HttpServlet {
 
         resp.addCookie(c);
 
-        resp.sendRedirect("fleet.jsp");
+        resp.sendRedirect("home/fleet.jsp");
 
 
     }
@@ -35,8 +35,9 @@ public class Favorites extends HttpServlet {
         Cookie[] cookies = req.getCookies();
 
         req.setAttribute("cookies", cookies);
-        RequestDispatcher dispatcher = req.getRequestDispatcher("preferiti.jsp");
-        dispatcher.forward(req, resp);
+        resp.sendRedirect("home/preferiti.jsp");
+       /* RequestDispatcher dispatcher = req.getRequestDispatcher("home/preferiti.jsp");
+        dispatcher.forward(req, resp);*/
 
     }
 }
