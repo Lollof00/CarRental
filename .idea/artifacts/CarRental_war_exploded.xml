@@ -14,8 +14,6 @@
           <element id="module-output" name="CarRental" />
         </element>
         <element id="directory" name="lib">
-          <element id="library" level="project" name="Maven: javax.mail:mail:1.5.0-b01" />
-          <element id="library" level="project" name="Maven: javax.activation:activation:1.1" />
           <element id="library" level="project" name="Maven: org.postgresql:postgresql:42.3.4" />
           <element id="library" level="project" name="Maven: org.checkerframework:checker-qual:3.5.0" />
           <element id="library" level="project" name="Maven: org.json:json:20220320" />

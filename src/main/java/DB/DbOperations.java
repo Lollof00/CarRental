@@ -165,6 +165,48 @@ public class DbOperations {
         return error;
     }
 
+    public ArrayList<ArrayList<String>> getOrdiniUtente(String utente)
+    {
+        ArrayList<ArrayList<String>> veicoliOrdinati = new ArrayList<>();
+        try{
+            result = connect.getConnection().prepareStatement("SELECT id_macchina,utente from public.ordini");
+            ResultSet resultSet = result.executeQuery();
+
+            Set<Integer> idOrdinati = new HashSet<>();
+            if (resultSet.next()) {
+                while (resultSet.next()) {
+                    String utenteConferma = resultSet.getString("utente");
+                    if (utenteConferma.equals(utente))
+                    {
+                        int id = resultSet.getInt("id_macchina");
+                        idOrdinati.add(id);
+                    }
+                }
+            }
+
+            result = connect.getConnection().prepareStatement("SELECT * from public.macchine");
+            ResultSet resultSet2 = result.executeQuery();
+            ResultSetMetaData rsmd2 = resultSet2.getMetaData();
+
+            int numCols= rsmd2.getColumnCount();
+            while(resultSet2.next()){
+                ArrayList<String> riga = new ArrayList<>();
+                if(idOrdinati.contains(resultSet2.getInt("id"))) {
+                    for (int i = 1; i <= numCols; i++) {
+                        riga.add(resultSet2.getString(i));
+                    }
+                    veicoliOrdinati.add(riga);
+                }
+            }
+
+        }catch (SQLException e)
+        {
+            throw new RuntimeException(e);
+        }
+
+        return veicoliOrdinati;
+    }
+
     public ArrayList<ArrayList<String>> getAvailableVeicoli(java.util.Date pickUp, java.util.Date dropOff){
         ArrayList<ArrayList<String>> veicoliDisponibili = new ArrayList<>();
         try {
