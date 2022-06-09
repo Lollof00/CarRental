@@ -1,4 +1,5 @@
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="DB.DbOperations" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -105,7 +106,8 @@
 <div class="services">
     <div class="container">
         <div class="row">
-            <% ArrayList<ArrayList<String>> veicoli = (ArrayList<ArrayList<String>>) request.getAttribute("veicoli");
+            <% DbOperations dbOperations = new DbOperations();
+                ArrayList<ArrayList<String>> veicoli = dbOperations.getOrdiniUtente((String) session.getAttribute("username"));
                 for(ArrayList<String> veicolo : veicoli){
             %>
 
@@ -124,9 +126,6 @@
                                 <i class="fa fa-briefcase" title="luggages"></i> <%=veicolo.get(7)%> &nbsp;&nbsp;&nbsp;
                                 <i class="fa fa-sign-out" title="doors"></i> <%=veicolo.get(6)%> &nbsp;&nbsp;&nbsp;
                             </p>
-                            <a href="#" data-toggle="modal" data-target="#exampleModal" class="filled-button" data="<%=veicolo.get(0)%>" id="modalBook">Book Now</a>
-                            <p></p>
-                            <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2" >Aggiungi ai preferiti</button>
 
                         </div>
                     </div>
