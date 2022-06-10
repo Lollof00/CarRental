@@ -126,6 +126,12 @@
                                 <i class="fa fa-briefcase" title="luggages"></i> <%=veicolo.get(7)%> &nbsp;&nbsp;&nbsp;
                                 <i class="fa fa-sign-out" title="doors"></i> <%=veicolo.get(6)%> &nbsp;&nbsp;&nbsp;
                             </p>
+                            <p>
+                                <i class="fa fa-calendar" aria-hidden="true"></i> <%=veicolo.get(16)%> - <%=veicolo.get(17)%>
+                            </p>
+                            <p>
+                                <i class="fa fa-map-marker" aria-hidden="true"></i> <%=veicolo.get(15)%> - <%=veicolo.get(11)%>
+                            </p>
 
                         </div>
                     </div>
