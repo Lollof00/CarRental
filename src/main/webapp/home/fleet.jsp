@@ -25,18 +25,22 @@
     <link rel="stylesheet" href="../assets/css/fontawesome.css">
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/owl.css">
+    <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
 
   </head>
 
   <body>
 
-  <% System.out.println(ServletUtility.getSuccessMessage(request));
-    if(!ServletUtility.getSuccessMessage(request).isEmpty()){
+  <%
+    if(!(session.getAttribute("bookSuccess") ==null)){
   %>
   <script>
-    $("#confermaPrenotazione").modal("show")
+    $(document).ready(function() {
+      $("#confermaPrenotazione").modal("show")
+    })
   </script>
 <%
   }
@@ -56,10 +60,13 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title"><%=ServletUtility.getSuccessMessage(request)%></h5>
+        <h5 class="modal-title"><%=session.getAttribute("bookSuccess")%></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
+      </div>
+      <div class="modal-body">
+        <p>Ti abbiamo inviato un email con i dettagli del noleggio</p>
       </div>
       <div class="modal-footer">
         <a href="miei-ordini.jsp"><button type="button" class="btn btn-primary">Vai ai miei ordini</button></a>
@@ -339,8 +346,7 @@
         })
       })
     </script>
-    <script src="../vendor/jquery/jquery.min.js"></script>
-    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
 
     <!-- Additional Scripts -->
     <script src="../assets/js/custom.js"></script>

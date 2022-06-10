@@ -29,10 +29,11 @@ public class FilterCar extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
+            //TODO fixare le date dell'input
             String pick_location = req.getParameter("locationPick");
             String drop_location = req.getParameter("locationDrop");
-            Date pickUp = new SimpleDateFormat("yyyy-MM-dd").parse(req.getParameter("pickUp"));
-            Date dropOff = new SimpleDateFormat("yyyy-MM-dd").parse(req.getParameter("dropOff"));
+            Date pickUp = new SimpleDateFormat("dd/MM/yyyy").parse(req.getParameter("pickUp"));
+            Date dropOff = new SimpleDateFormat("dd/MM/yyyy").parse(req.getParameter("dropOff"));
             ArrayList<ArrayList<String>> veicoliDisponibili = dbOperations.getAvailableVeicoli(pickUp,dropOff);
             if(veicoliDisponibili.isEmpty()){
                 ServletUtility.setErrorMessage("Non ci sono vetture disponibili per la data scelta",req);

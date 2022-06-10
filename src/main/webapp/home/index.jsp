@@ -12,8 +12,28 @@
 
     <title>Car Rental</title>
 
+    <link
+            href="https://code.jquery.com/ui/1.12.1/themes/ui-lightness/jquery-ui.css"
+            rel="stylesheet"
+    />
+    <script
+            src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous"
+    ></script>
+    <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"
+            integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+    ></script>
     <!-- Bootstrap core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
 
     <!-- Additional CSS Files -->
     <link rel="stylesheet" href="../assets/css/fontawesome.css">
@@ -134,13 +154,13 @@
         </div>
         <div class="col-xl-2 col-lg-4 col-md-6 px-2">
           <div class="date mb-3" id="date" data-target-input="nearest">
-            <input type="date" class="form-control p-4 datetimepicker-input" placeholder="Pickup Date"
+            <input id="pickUp" type="text" class="form-control p-4 datetimepicker-input" placeholder="Pickup Date"
                    data-target="#date" data-toggle="datetimepicker" name="pickUp"/>
           </div>
         </div>
         <div class="col-xl-2 col-lg-4 col-md-6 px-2">
           <div class="time mb-3" id="time" data-target-input="nearest">
-            <input type="date" class="form-control p-4 datetimepicker-input" placeholder="Drop Off"
+            <input id="dropOff" type="text" class="form-control p-4 datetimepicker-input" placeholder="Drop Off"
                    data-target="#time" data-toggle="datetimepicker" name="dropOff" />
           </div>
         </div>
@@ -153,6 +173,52 @@
     <h6 style="color: red;"><%= ServletUtility.getErrorMessage(request) %></h6>
     <h6 style="color: green;"><%= ServletUtility.getSuccessMessage(request)%></h6>
 
+  <script>
+
+
+
+
+
+    jQuery(function($) {
+      $('input.datetimepicker').datepicker({
+        duration: '',
+        changeMonth: false,
+        changeYear: false,
+        yearRange: '2010:2020',
+        showTime: false,
+        time24h: true
+      });
+
+      $.datepicker.regional['it'] = {
+        closeText: 'Chiudi', // set a close button text
+        currentText: 'Oggi', // set today text
+        monthNames: ['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno',   'Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'], // set month names
+        monthNamesShort: ['Gen','Feb','Mar','Apr','Mag','Giu','Lug','Ago','Set','Ott','Nov','Dic'], // set short month names
+        dayNames: ['Domenica','Luned&#236','Marted&#236','Mercoled&#236','Gioved&#236','Venerd&#236','Sabato'], // set days names
+        dayNamesShort: ['Dom','Lun','Mar','Mer','Gio','Ven','Sab'], // set short day names
+        dayNamesMin: ['Do','Lu','Ma','Me','Gio','Ve','Sa'], // set more short days names
+        dateFormat: 'dd/mm/yy' // set format date
+      };
+
+      $.datepicker.setDefaults($.datepicker.regional['it']);
+    });
+  </script>
+
+
+  <script>
+    $(document).ready(function() {
+      $("#pickUp").datepicker({
+        onClose: function (selectedDate) {
+          $("#dropOff").datepicker("option", "minDate", selectedDate);
+        }
+      });
+      $("#dropOff").datepicker({
+        onClose: function (selectedDate) {
+          $("#pickUp").datepicker("option", "maxDate", selectedDate);
+        }
+      });
+    });
+  </script>
     <div class="testimonials">
       <div class="container">
         <div class="row">
@@ -222,8 +288,7 @@
       </div>
     </div>
 
-    <script src="../vendor/jquery/jquery.min.js"></script>
-    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
 
     <script src="../assets/js/custom.js"></script>
     <script src="../assets/js/owl.js"></script>
