@@ -1,16 +1,15 @@
 package DB;
 
 import java.sql.*;
+import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Locale;
-import java.util.Set;
+import java.util.*;
 
 
 public class DbOperations {
     private PreparedStatement result;
+    private PreparedStatement result2;
     private DbConnect connect= new DbConnect();
 
     public DbOperations(){
@@ -167,44 +166,48 @@ public class DbOperations {
 
     public ArrayList<ArrayList<String>> getOrdiniUtente(String utente)
     {
-        ArrayList<ArrayList<String>> veicoliOrdinati = new ArrayList<>();
+        ArrayList<ArrayList<String>> finishArray = new ArrayList<>();
         try{
             result = connect.getConnection().prepareStatement("SELECT id_macchina,utente from public.ordini");
             ResultSet resultSet = result.executeQuery();
 
-            Set<Integer> idOrdinati = new HashSet<>();
-            if (resultSet.next()) {
-                while (resultSet.next()) {
-                    String utenteConferma = resultSet.getString("utente");
-                    if (utenteConferma.equals(utente))
-                    {
-                        int id = resultSet.getInt("id_macchina");
-                        idOrdinati.add(id);
-                    }
+
+            ArrayList<Integer> idOrdinati = new ArrayList<>();
+            while (resultSet.next()) {
+                String utenteConferma = resultSet.getString("utente");
+                if (utenteConferma.equals(utente))
+                {
+                    int id = resultSet.getInt("id_macchina");
+                    idOrdinati.add(id);
                 }
             }
 
-            result = connect.getConnection().prepareStatement("SELECT * from public.macchine");
+
+            System.out.println(idOrdinati);
+
+            result = connect.getConnection().prepareStatement("SELECT * from public.macchine, public.ordini " +
+                                                                 "WHERE macchine.id = ordini.id_macchina");
             ResultSet resultSet2 = result.executeQuery();
             ResultSetMetaData rsmd2 = resultSet2.getMetaData();
 
-            int numCols= rsmd2.getColumnCount();
-            while(resultSet2.next()){
+
+            int numColTot = rsmd2.getColumnCount();
+            while (resultSet2.next())
+            {
                 ArrayList<String> riga = new ArrayList<>();
-                if(idOrdinati.contains(resultSet2.getInt("id"))) {
-                    for (int i = 1; i <= numCols; i++) {
-                        riga.add(resultSet2.getString(i));
-                    }
-                    veicoliOrdinati.add(riga);
+                for (int i = 1; i <= numColTot; i++)
+                {
+                    riga.add(resultSet2.getString(i));
                 }
+                finishArray.add(riga);
             }
 
         }catch (SQLException e)
         {
             throw new RuntimeException(e);
         }
-        System.out.println(veicoliOrdinati);
-        return veicoliOrdinati;
+        System.out.println(finishArray);
+        return finishArray;
     }
 
     public ArrayList<ArrayList<String>> getAvailableVeicoli(java.util.Date pickUp, java.util.Date dropOff){
