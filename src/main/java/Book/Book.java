@@ -45,7 +45,7 @@ public class Book extends HttpServlet {
 
             if(!dbOperations.aggiungiOrdine(new java.sql.Date(pick_date.getTime()), (String) session.getAttribute("username"),  new java.sql.Date(drop_date.getTime()), id_macchina, drop_location, full_name, email, phone, pick_location)){
                 ServletUtility.setSuccessMessage("Prenotazione effettuata",req);
-                req.getRequestDispatcher("home/fleet.jsp").forward(req,resp);
+                req.getRequestDispatcher("/index.jsp").forward(req,resp);
             }
         } catch (SQLException e) {
             ServletUtility.setErrorMessage("La prenotazione non è andata a buon fine",req);

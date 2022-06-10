@@ -5,6 +5,7 @@
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.text.ParseException" %>
 <%@page import="Utility.ServletUtility" %>
+<%@ page import="java.util.Calendar" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,7 +17,6 @@
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
-    <title>PHPJabbers.com | Free Car Rental Website Template</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -74,8 +74,7 @@
         <div class="row">
           <div class="col-md-8 col-xs-12">
             <ul class="left-info">
-              <li><a href="#"><i class="fa fa-envelope"></i>contact@company.com</a></li>
-              <li><a href="#"><i class="fa fa-phone"></i>123-456-7890</a></li>
+              <li><a href="#"><i class="fa fa-envelope"></i>carrentalsapienza@gmail.com</a></li>
             </ul>
           </div>
           <div class="col-md-4">
@@ -90,7 +89,7 @@
     <header class="">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <a class="navbar-brand" href="index.jsp"><h2>Car Rental<em> Website</em></h2></a>
+          <a class="navbar-brand" href="index.jsp"><h2>Car Rental</h2></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -102,7 +101,7 @@
                 </a>
               </li>
               <li class="nav-item active">
-                <a class="nav-link" href="fleet.jsp">Fleet</a>
+                <a class="nav-link" href="miei-ordini.jsp">I miei ordini</a>
               </li>
               <li class="nav-item dropdown">
                 <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">About</a>
@@ -113,7 +112,7 @@
                 </div>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="contact.jsp">Contact Us</a>
+                <a class="nav-link" href="contact.jsp">Contattaci</a>
               </li>
             </ul>
           </div>
@@ -126,7 +125,14 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <h1>Fleet</h1>
+            <% Date pick_date = (Date) session.getAttribute("pick_date");
+              Calendar pick_date_calendar = Calendar.getInstance();
+              pick_date_calendar.setTime(pick_date);
+              Date drop_date = (Date) session.getAttribute("drop_date");
+              Calendar drop_date_calendar = Calendar.getInstance();
+              pick_date_calendar.setTime(drop_date);
+            %>
+            <h1><b>Ritiro: <%=session.getAttribute("pick_location")%> </b>   Il: <%=pick_date_calendar.get(Calendar.DAY_OF_MONTH)%>/<%=pick_date_calendar.get(Calendar.MONTH)%> <b>Riconsegna:</b> <%=session.getAttribute("drop_location")%>  Il: <%=drop_date_calendar.get(Calendar.DAY_OF_MONTH)%>/<%=drop_date_calendar.get(Calendar.MONTH)%></h1>
             <span>Lorem ipsum dolor sit amet.</span>
           </div>
         </div>

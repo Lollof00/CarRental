@@ -64,7 +64,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="miei-ordini.jsp">miei ordini</a>
+                <a class="nav-link" href="miei-ordini.jsp">I miei ordini</a>
               </li>
               <li class="nav-item dropdown">
                 <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">About</a>
@@ -75,7 +75,7 @@
                 </div>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="contact.jsp">Contact Us</a>
+                <a class="nav-link" href="contact.jsp">Contattaci</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="${pageContext.request.contextPath}/logout">Logout</a>
@@ -86,46 +86,30 @@
       </nav>
     </header>
 
-    <!-- Page Content -->
-    <!-- Banner Starts Here -->
+
     <div class="main-banner header-text" id="top">
         <div class="Modern-Slider">
-          <!-- Item -->
           <div class="item item-1">
             <div class="img-fill">
                 <div class="text-content">
-                  <h6>lorem ipsum dolor sit amet!</h6>
-                  <h4>Quam temporibus accusam <br> hic ducimus quia</h4>
-                  <p>Magni deserunt dolorem consectetur adipisicing elit. Corporis molestiae optio, laudantium odio quod rerum maiores, omnis unde quae illo.</p>
-                  <a href="contact.jsp" class="filled-button">contact us</a>
+                  <h6>Mettiti in contatto con noi!</h6>
+                  <h4>Risolveremo<br> tutti i tuoi problemi</h4>
+                  <p>Non esitare a contattarci per eventuali dubbi o domande.</p>
+                  <a href="contact.jsp" class="filled-button">contattaci</a>
                 </div>
             </div>
           </div>
-          <!-- // Item -->
-          <!-- Item -->
+
           <div class="item item-2">
             <div class="img-fill">
-                <div class="text-content">
-                  <h6>magni deserunt dolorem harum quas!</h6>
-                  <h4>Aliquam iusto harum <br>  ratione porro odio</h4>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At culpa cupiditate mollitia adipisci assumenda laborum eius quae quo excepturi, eveniet. Dicta nulla ea beatae consequuntur?</p>
-                  <a href="fleet.jsp" class="filled-button">Fleet</a>
-                </div>
             </div>
           </div>
-          <!-- // Item -->
-          <!-- Item -->
+
           <div class="item item-3">
             <div class="img-fill">
-                <div class="text-content">
-                  <h6>alias officia qui quae vitae natus!</h6>
-                  <h4>Lorem ipsum dolor <br> sit amet, consectetur.</h4>
-                  <p>Vivamus ut tellus mi. Nulla nec cursus elit, id vulputate mi. Sed nec cursus augue. Phasellus lacinia ac sapien vitae dapibus. Mauris ut dapibus velit cras interdum nisl ac urna tempor mollis.</p>
-                  <a href="offers.html" class="filled-button">Offers</a>
-                </div>
             </div>
           </div>
-          <!-- // Item -->
+
         </div>
     </div>
     <!-- Banner Ends Here -->
@@ -135,17 +119,17 @@
         <div class="col-xl-2 col-lg-4 col-md-6 px-2">
           <select class="custom-select px-4 mb-3" style="height: 50px;" name="locationPick">
             <option selected>Pickup Location</option>
-            <option value="1">Location 1</option>
-            <option value="2">Location 2</option>
-            <option value="3">Location 3</option>
+            <option value="Roma Leonardo Da Vinci">Roma Leonardo Da Vinci</option>
+            <option value="Catania TorreRossa">Catania TorreRossa</option>
+            <option value="Napoli Capodichino">Napoli Capodichino</option>
           </select>
         </div>
         <div class="col-xl-2 col-lg-4 col-md-6 px-2">
           <select class="custom-select px-4 mb-3" style="height: 50px;" name="locationDrop">
             <option selected>Drop Location</option>
-            <option value="1">Location 1</option>
-            <option value="2">Location 2</option>
-            <option value="3">Location 3</option>
+            <option value="Milano Malpensa">Milano Malpensa</option>
+            <option value="Bologna Guielmo Marconi">Bologna Guielmo Marconi</option>
+            <option value="Palermo Falcone e Borsellino">Palermo Falcone e Borsellino</option>
           </select>
         </div>
         <div class="col-xl-2 col-lg-4 col-md-6 px-2">
@@ -174,8 +158,8 @@
         <div class="row">
           <div class="col-md-12">
             <div class="section-heading">
-              <h2>What they say <em>about us</em></h2>
-              <span>testimonials from our greatest clients</span>
+              <h2>Cosa dicono <em>di noi</em></h2>
+              <span>testimonials dai nostri miglori clienti</span>
             </div>
           </div>
           <div class="col-md-12">
@@ -224,105 +208,28 @@
     </div>
 
 
-    <!-- Footer Starts Here -->
-    <footer>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-3 footer-item">
-            <h4>Car Rental Website</h4>
-            <p>Vivamus tellus mi. Nulla ne cursus elit,vulputate. Sed ne cursus augue hasellus lacinia sapien vitae.</p>
-            <ul class="social-icons">
-              <li><a rel="nofollow" href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
-              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-              <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-            </ul>
-          </div>
-          <div class="col-md-3 footer-item">
-            <h4>Useful Links</h4>
-            <ul class="menu-list">
-              <li><a href="#">Vivamus ut tellus mi</a></li>
-              <li><a href="#">Nulla nec cursus elit</a></li>
-              <li><a href="#">Vulputate sed nec</a></li>
-              <li><a href="#">Cursus augue hasellus</a></li>
-              <li><a href="#">Lacinia ac sapien</a></li>
-            </ul>
-          </div>
-          <div class="col-md-3 footer-item">
-            <h4>Additional Pages</h4>
-            <ul class="menu-list">
-              <li><a href="#">About Us</a></li>
-              <li><a href="#">Blog</a></li>
-              <li><a href="#">FAQ</a></li>
-              <li><a href="#">Contact Us</a></li>
-              <li><a href="#">Terms</a></li>
-            </ul>
-          </div>
-          <div class="col-md-3 footer-item last-item">
-            <h4>Contact Us</h4>
-            <div class="contact-form">
-              <form id="contact footer-contact" action="" method="post">
-                <div class="row">
-                  <div class="col-lg-12 col-md-12 col-sm-12">
-                    <fieldset>
-                      <input name="name" type="text" class="form-control" id="name" placeholder="Full Name" required="">
-                    </fieldset>
-                  </div>
-                  <div class="col-lg-12 col-md-12 col-sm-12">
-                    <fieldset>
-                      <input name="email" type="text" class="form-control" id="email" pattern="[^ @]*@[^ @]*" placeholder="E-Mail Address" required="">
-                    </fieldset>
-                  </div>
-                  <div class="col-lg-12">
-                    <fieldset>
-                      <textarea name="message" rows="6" class="form-control" id="message" placeholder="Your Message" required=""></textarea>
-                    </fieldset>
-                  </div>
-                  <div class="col-lg-12">
-                    <fieldset>
-                      <button type="submit" id="form-submit" class="filled-button">Send Message</button>
-                    </fieldset>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
+
     
     <div class="sub-footer">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
             <p>
-                Copyright © 2020 Company Name
-                - Template by: <a href="https://www.phpjabbers.com/">PHPJabbers.com</a>
+                Copyright © 2022 Car Rental
             </p>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Bootstrap core JavaScript -->
     <script src="../vendor/jquery/jquery.min.js"></script>
     <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Additional Scripts -->
     <script src="../assets/js/custom.js"></script>
     <script src="../assets/js/owl.js"></script>
     <script src="../assets/js/slick.js"></script>
     <script src="../assets/js/accordions.js"></script>
 
-    <script language = "text/Javascript"> 
-      cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
-      function clearField(t){                   //declaring the array outside of the
-      if(! cleared[t.id]){                      // function makes it static and global
-          cleared[t.id] = 1;  // you could use true and false, but that's more typing
-          t.value='';         // with more chance of typos
-          t.style.color='#fff';
-          }
-      }
-    </script>
 
   </body>
 </html>
