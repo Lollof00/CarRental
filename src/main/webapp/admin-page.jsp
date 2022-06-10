@@ -1,5 +1,6 @@
 <%@ page import="DB.DbOperations" %>
 <%@ page import="java.util.ArrayList" %>
+<%@page import="Utility.ServletUtility" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -183,7 +184,7 @@
                         $("table tbody tr").eq(index + 1).find(".add, .edit").toggle();
                         $('[data-toggle="tooltip"]').tooltip();
                         $(this).parents("tr").find("td:not(:last-child)").each(function(i,el){
-                          alert($(this).text())
+
                         });
                     });
                     // Add row on add button click
@@ -305,6 +306,8 @@
                     });
                 });
             </script>
+        <h6 style="color: red;"><%= ServletUtility.getErrorMessage(request) %></h6>
+        <h6 style="color: green;"><%= ServletUtility.getSuccessMessage(request)%></h6>
         <div class="container-lg">
             <div class="table-responsive">
                 <div class="table-wrapper">

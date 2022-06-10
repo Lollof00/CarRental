@@ -1,6 +1,7 @@
 package ForgetPassword;
 
 import DB.DbOperations;
+import Utility.ServletUtility;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,8 +29,9 @@ public class ForgetPassword extends HttpServlet {
         emailBean.setMessage("Ciaoo "+email+" La tua password è: "+password);
         try {
             EmailUtility.sendMail(emailBean);
+            ServletUtility.setSuccessMessage("L'email è stata inviata correttamente",req);
         } catch (Exception e) {
-            throw new RuntimeException(e);
+           ServletUtility.setErrorMessage("Qualcosa è andato storto",req);
         }
     }
 }

@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import DB.DbOperations;
+import Utility.ServletUtility;
 import org.json.*;
 
 @WebServlet(name = "AdminServlet", value = "/AdminServlet")
@@ -31,20 +32,23 @@ public class AdminServlet extends HttpServlet {
         String id = req.getParameter("id");
         System.out.println(id);
         if(!dbOperations.DeleteVeicoli(Integer.valueOf(id))){
-            System.out.println("eliminazione effettuata");
+            ServletUtility.setSuccessMessage("Eliminazione effettuata",req);
+            req.getRequestDispatcher("admin-page.jsp").forward(req,resp);
         }else {
-            System.out.println("eliminazione non riuscita");
+            ServletUtility.setErrorMessage("L'eliminazione non è andata a buon fine",req);
+            req.getRequestDispatcher("admin-page.jsp").forward(req,resp);
         }
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String[] data = req.getParameterValues("d[]");
-        System.out.println(Arrays.toString(data));
         if(!dbOperations.UpdateVeicoli(data)){
-            System.out.println("modifica effettuata");
+            ServletUtility.setSuccessMessage("Modifica effettuata",req);
+            req.getRequestDispatcher("admin-page.jsp").forward(req,resp);
         }else{
-            System.out.println("errore nella modifica");
+            ServletUtility.setErrorMessage("La modifica non è andata a buon fine",req);
+            req.getRequestDispatcher("admin-page.jsp").forward(req,resp);
         }
 
     }

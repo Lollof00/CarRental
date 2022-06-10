@@ -1,3 +1,4 @@
+<%@page import="Utility.ServletUtility" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -165,6 +166,8 @@
       </div>
     </div>
     </form>
+    <h6 style="color: red;"><%= ServletUtility.getErrorMessage(request) %></h6>
+    <h6 style="color: green;"><%= ServletUtility.getSuccessMessage(request)%></h6>
 
     <div class="testimonials">
       <div class="container">

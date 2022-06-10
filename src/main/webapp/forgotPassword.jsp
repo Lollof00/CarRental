@@ -1,3 +1,4 @@
+<%@page import="Utility.ServletUtility" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,6 +19,8 @@
       <div class="card">
         <div class="card-header">
           <h3>Hai dimenticato la password?</h3>
+          <h6 style="color: red;"><%= ServletUtility.getErrorMessage(request) %></h6>
+          <h6 style="color: green;"><%= ServletUtility.getSuccessMessage(request)%></h6>
         </div>
         <div class="card-body">
           <form method="post" action="ForgetPassword">

@@ -2,6 +2,7 @@ package autenticazione;
 
 import DB.DbConnect;
 import DB.DbOperations;
+import Utility.ServletUtility;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -36,10 +37,12 @@ public class Login extends HttpServlet {
                 session.setAttribute("username",username);
                 resp.sendRedirect("home/index.jsp");
             }else{
-                //TODO messaggo di errore
-            };
+                ServletUtility.setErrorMessage("Nome utente o password errati",req);
+                req.getRequestDispatcher("login-user.jsp").forward(req,resp);
+            }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            ServletUtility.setErrorMessage("Qualcosa è andato storto",req);
+            req.getRequestDispatcher("login-user.jsp").forward(req,resp);
         }
     }
 
