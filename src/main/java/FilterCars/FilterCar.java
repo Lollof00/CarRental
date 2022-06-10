@@ -1,6 +1,7 @@
 package FilterCars;
 
 import DB.DbOperations;
+import Utility.ServletUtility;
 
 import javax.mail.Session;
 import javax.servlet.ServletException;
@@ -33,6 +34,10 @@ public class FilterCar extends HttpServlet {
             Date pickUp = new SimpleDateFormat("yyyy-MM-dd").parse(req.getParameter("pickUp"));
             Date dropOff = new SimpleDateFormat("yyyy-MM-dd").parse(req.getParameter("dropOff"));
             ArrayList<ArrayList<String>> veicoliDisponibili = dbOperations.getAvailableVeicoli(pickUp,dropOff);
+            if(veicoliDisponibili.isEmpty()){
+                ServletUtility.setErrorMessage("Non ci sono vetture disponibili per la data scelta",req);
+                req.getRequestDispatcher("index.jsp").forward(req,resp);
+            }
             HttpSession session = req.getSession(true);
             session.setAttribute("veicoli", veicoliDisponibili);
             session.setAttribute("pick_location", pick_location);

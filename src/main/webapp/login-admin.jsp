@@ -1,4 +1,4 @@
-
+<%@page import="Utility.ServletUtility" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
@@ -40,6 +40,8 @@
                     </div>
                     <div class="form-group">
                         <input type="submit" value="Login" class="btn float-right login_btn">
+                        <h6 style="color: red;"><%= ServletUtility.getErrorMessage(request) %></h6>
+                        <h6 style="color: green;"><%= ServletUtility.getSuccessMessage(request)%></h6>
                     </div>
                 </form>
             </div>

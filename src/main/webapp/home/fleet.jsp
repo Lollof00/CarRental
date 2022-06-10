@@ -4,6 +4,7 @@
 <%@ page import="java.util.Date" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.text.ParseException" %>
+<%@page import="Utility.ServletUtility" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,6 +32,16 @@
 
   <body>
 
+  <% System.out.println(ServletUtility.getSuccessMessage(request));
+    if(!ServletUtility.getSuccessMessage(request).isEmpty()){
+  %>
+  <script>
+    $("#confermaPrenotazione").modal("show")
+  </script>
+<%
+  }
+  %>
+
     <!-- ***** Preloader Start ***** -->
     <div id="preloader">
         <div class="jumper">
@@ -40,6 +51,22 @@
         </div>
     </div>  
     <!-- ***** Preloader End ***** -->
+
+  <div class="modal" id="confermaPrenotazione" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><%=ServletUtility.getSuccessMessage(request)%></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-footer">
+        <a href="miei-ordini.jsp"><button type="button" class="btn btn-primary">Vai ai miei ordini</button></a>
+      </div>
+    </div>
+  </div>
+  </div>
 
     <!-- Header -->
     <div class="sub-header">
@@ -128,7 +155,7 @@
                     <i class="fa fa-briefcase" title="luggages"></i> <%=veicolo.get(7)%> &nbsp;&nbsp;&nbsp;
                     <i class="fa fa-sign-out" title="doors"></i> <%=veicolo.get(6)%> &nbsp;&nbsp;&nbsp;
                   </p>
-                  <a href="#" data-toggle="modal" data-target="#exampleModal" class="filled-button" data="<%=veicolo.get(0)%>" id="modalBook">Book Now</a>
+                  <a href="#" data-toggle="modal" data-target="#exampleModal" class="filled-button" data="<%=veicolo.get(0)%>" id="modalBook">Prenota ora</a>
                   <p></p>
                   <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2" >Aggiungi ai preferiti</button>
 
@@ -263,7 +290,7 @@
 
                   <div class="form-group">
                     <fieldset>
-                      <input type="text" class="form-control" placeholder="Enter full name" name="full-name" required="">
+                      <input type="text" class="form-control" placeholder="Nome Completo" name="full-name" required>
                     </fieldset>
                   </div>
 
@@ -271,7 +298,7 @@
                    <div class="col-md-6">
                     <div class="form-group">
                       <fieldset>
-                        <input type="text" class="form-control" placeholder="Enter email address" name="email" required="">
+                        <input type="email" class="form-control" placeholder="Indirizzo email" name="email" required>
                       </fieldset>
                     </div>
                    </div>
@@ -279,7 +306,7 @@
                    <div class="col-md-6">
                     <div class="form-group">
                       <fieldset>
-                        <input type="text" class="form-control" placeholder="Enter phone" name="phone" required="">
+                        <input type="tel" class="form-control" placeholder="Telefono" name="phone" required>
                       </fieldset>
                     </div>
                    </div>

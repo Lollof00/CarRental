@@ -29,44 +29,44 @@
             <div class="input-group-prepend">
               <span class="input-group-text"><i class="fas fa-user"></i></span>
             </div>
-            <input type="text" class="form-control" name="nome" placeholder="nome">
+            <input type="text" class="form-control" name="nome" placeholder="nome" required>
           </div>
           <div class="input-group form-group">
             <div class="input-group-prepend">
               <span class="input-group-text"><i class="fas fa-user"></i></span>
             </div>
-            <input type="text" class="form-control" name="cognome" placeholder="cognome">
+            <input type="text" class="form-control" name="cognome" placeholder="cognome" required>
           </div>
           <div class="input-group form-group">
             <div class="input-group-prepend">
               <span class="input-group-text"><i class="fa-solid fa-box-archive"></i></span>
             </div>
-            <input type="text" class="form-control" name="cf" placeholder="codice fiscale" size="16" maxlength="16">
+            <input type="text" class="form-control" name="cf" placeholder="codice fiscale" size="16" maxlength="16" required>
           </div>
           <div class="input-group form-group">
             <div class="input-group-prepend">
               <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
             </div>
-            <input type="date" class="form-control" name="nascita" value="nascita">
+            <input type="date" class="form-control" name="nascita" value="nascita" required>
           </div>
           <div class="input-group form-group">
             <div class="input-group-prepend">
               <span class="input-group-text"><i class="fas fa-envelope"></i></span>
             </div>
-            <input type="email" class="form-control" name="email" placeholder="email">
+            <input type="email" class="form-control" name="email" placeholder="email" required>
           </div>
           <div class="input-group form-group">
             <div class="input-group-prepend">
               <span class="input-group-text"><i class="fas fa-user"></i></span>
             </div>
-            <input type="text" class="form-control" name="username" placeholder="username">
+            <input type="text" class="form-control" name="username" placeholder="username" required>
           </div>
 
           <div class="input-group form-group">
             <div class="input-group-prepend">
               <span class="input-group-text"><i class="fas fa-key"></i></span>
             </div>
-            <input type="password" class="form-control" name="password" placeholder="password">
+            <input type="password" class="form-control" name="password" placeholder="password" required>
           </div>
           <input type="hidden" value="" name="Path" id="path"/>
           <div class="form-group">

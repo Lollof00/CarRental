@@ -1,6 +1,7 @@
 package autenticazione;
 
 import DB.DbOperations;
+import Utility.ServletUtility;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -29,10 +30,12 @@ public class LoginAdmin extends HttpServlet {
                 HttpSession session = req.getSession(true);
                 resp.sendRedirect("admin-page.jsp");
             }else{
-                //TODO messaggo di errore
+                ServletUtility.setErrorMessage("Nome utente o password errati",req);
+                req.getRequestDispatcher("login-admin.jsp").forward(req,resp);
             };
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            ServletUtility.setErrorMessage("Qualcosa è andato storto",req);
+            req.getRequestDispatcher("login-admin.jsp").forward(req,resp);
         }
 
     }

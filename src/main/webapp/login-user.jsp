@@ -1,4 +1,4 @@
-
+<%@page import="Utility.ServletUtility" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
@@ -53,6 +53,8 @@
                 <div class="d-flex justify-content-center">
                     <a href="login-admin.jsp">Sei un amministratore?</a>
                 </div>
+                <h6 style="color: red;"><%= ServletUtility.getErrorMessage(request) %></h6>
+                <h6 style="color: green;"><%= ServletUtility.getSuccessMessage(request)%></h6>
             </div>
         </div>
     </div>
