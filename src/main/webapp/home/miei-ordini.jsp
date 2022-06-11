@@ -112,7 +112,7 @@
             %>
 
             <div class="col-md-4" id="col">
-                <form action="preferiti" method="post">
+                <form action="${pageContext.request.contextPath}/commento" method="post">
                     <div class="service-item">
                         <img class="immagine" src="../carImage/<%=veicolo.get(8)%>" width="200" height="200">
                         <div class="down-content">
@@ -137,13 +137,11 @@
                                 if (veicolo.get(19).equals("0"))
                                 {
                                     %>
-                            <form action="commento" method="post">
                                 <p>
                                     <input type="text" maxlength="1000" name="commento" placeholder="Aggiungi un commento">
                                     <input type="hidden" name="ida" value="<%=veicolo.get(9)%>">
                                     <button type="submit" class="btn btn-primary">Aggiungi commento</button>
                                 </p>
-                            </form>
                             <%
                                 }else {
 
