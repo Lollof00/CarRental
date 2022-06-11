@@ -147,7 +147,7 @@ public class DbOperations {
         boolean error = false;
             try{
 
-                result = connect.getConnection().prepareStatement("INSERT into public.ordini(id,id_macchina,return_location,full_name,email,phone,pick_up_location,inizio,fine,utente) values (DEFAULT,?,?,?,?,?,?,?,?,?)");
+                result = connect.getConnection().prepareStatement("INSERT into public.ordini(id,id_macchina,return_location,full_name,email,phone,pick_up_location,inizio,fine,utente,commento,is_commentato) values (DEFAULT,?,?,?,?,?,?,?,?,?.?,?)");
                 result.setInt(1, Integer.parseInt(id_macchina));
                 result.setString(2,ret_location);
                 result.setString(3, full_name);
@@ -157,6 +157,8 @@ public class DbOperations {
                 result.setDate(7, inizio);
                 result.setDate(8, fine);
                 result.setString(9, utente);
+                result.setString(10, "");
+                result.setString(11, "0");
                 result.executeUpdate();
             } catch (Exception e){
                 e.printStackTrace();

@@ -14,6 +14,7 @@ public class commento extends HttpServlet {
 
     private DbOperations dbOperations;
 
+
     public void init() throws ServletException {
         dbOperations = new DbOperations();
     }
