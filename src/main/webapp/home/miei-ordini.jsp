@@ -133,6 +133,29 @@
                                 <i class="fa fa-map-marker" aria-hidden="true"></i> <%=veicolo.get(15)%> - <%=veicolo.get(11)%>
                             </p>
 
+                            <%
+                                if (veicolo.get(19).equals("0"))
+                                {
+                                    %>
+                            <form action="commento" method="post">
+                                <p>
+                                    <input type="text" maxlength="1000" name="commento" placeholder="Aggiungi un commento">
+                                    <input type="hidden" name="ida" value="<%=veicolo.get(9)%>">
+                                    <button type="submit" class="btn btn-primary">Aggiungi commento</button>
+                                </p>
+                            </form>
+                            <%
+                                }else {
+
+                            %>
+                                <p>
+                                    Commento effettuato:
+                                    <%=veicolo.get(20)%>
+                                </p>
+                            <%
+                                }
+                            %>
+
                         </div>
                     </div>
                 </form>

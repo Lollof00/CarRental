@@ -183,8 +183,6 @@ public class DbOperations {
             }
 
 
-            System.out.println(idOrdinati);
-
             result = connect.getConnection().prepareStatement("SELECT * from public.macchine, public.ordini " +
                                                                  "WHERE macchine.id = ordini.id_macchina");
             ResultSet resultSet2 = result.executeQuery();
@@ -274,6 +272,20 @@ public class DbOperations {
         }
 
         return password;
+    }
+
+    public Boolean aggiungiCommento(String commento, int id)
+    {
+        boolean error = false;
+        try {
+            result = connect.getConnection().prepareStatement("UPDATE public.macchine SET is_commentato = ?, commento = ? where id=?");
+            result.setString(1, "1");
+            result.setString(2, commento);
+            result.setInt(3, id);
+        }catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return error;
     }
 
 
