@@ -132,14 +132,17 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <% Date pick_date = (Date) session.getAttribute("pick_date");
+            <%SimpleDateFormat pick = new SimpleDateFormat("dd/MM/yyyy");
+              SimpleDateFormat drop = new SimpleDateFormat("dd/MM/yyyy");
+              Date pick_date = (Date) session.getAttribute("pick_date");
               Calendar pick_date_calendar = Calendar.getInstance();
               pick_date_calendar.setTime(pick_date);
               Date drop_date = (Date) session.getAttribute("drop_date");
               Calendar drop_date_calendar = Calendar.getInstance();
               pick_date_calendar.setTime(drop_date);
+              System.out.println(pick_date+""+drop_date);
             %>
-            <h1><b>Ritiro: <%=session.getAttribute("pick_location")%> </b>   Il: <%=pick_date_calendar.get(Calendar.DAY_OF_MONTH)%>/<%=pick_date_calendar.get(Calendar.MONTH)%> <b>Riconsegna:</b> <%=session.getAttribute("drop_location")%>  Il: <%=drop_date_calendar.get(Calendar.DAY_OF_MONTH)%>/<%=drop_date_calendar.get(Calendar.MONTH)%></h1>
+            <h1><b>Ritiro: <%=session.getAttribute("pick_location")%> </b>   Il: <%=pick.format(pick_date_calendar.getTime())%> <b>Riconsegna:</b> <%=session.getAttribute("drop_location")%>  Il: <%=drop.format(drop_date_calendar.getTime())%></h1>
             <span>Lorem ipsum dolor sit amet.</span>
           </div>
         </div>
