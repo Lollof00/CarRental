@@ -278,6 +278,7 @@ public class DbOperations {
 
     public Boolean aggiungiCommento(String commento, int id)
     {
+        System.out.println(id);
         boolean error = false;
         try {
             result = connect.getConnection().prepareStatement("UPDATE public.ordini SET is_commentato = ?, commento = ? where id=?");
