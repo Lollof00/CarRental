@@ -182,7 +182,7 @@
     jQuery(function($) {
       $('input.datetimepicker').datepicker({
         duration: '',
-        changeMonth: false,
+        changeMonth: true,
         changeYear: false,
         yearRange: '2010:2020',
         showTime: false,

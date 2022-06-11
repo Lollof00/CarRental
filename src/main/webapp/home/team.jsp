@@ -9,12 +9,10 @@
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
-    <title>PHPJabbers.com | Free Car Rental Website Template</title>
 
-    <!-- Bootstrap core CSS -->
+
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Additional CSS Files -->
     <link rel="stylesheet" href="../assets/css/fontawesome.css">
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/owl.css">
@@ -22,7 +20,6 @@
 
   <body>
 
-    <!-- ***** Preloader Start ***** -->
     <div id="preloader">
         <div class="jumper">
             <div></div>
@@ -30,23 +27,13 @@
             <div></div>
         </div>
     </div>  
-    <!-- ***** Preloader End ***** -->
 
-    <!-- Header -->
     <div class="sub-header">
       <div class="container">
         <div class="row">
           <div class="col-md-8 col-xs-12">
             <ul class="left-info">
-              <li><a href="#"><i class="fa fa-envelope"></i>contact@company.com</a></li>
-              <li><a href="#"><i class="fa fa-phone"></i>123-456-7890</a></li>
-            </ul>
-          </div>
-          <div class="col-md-4">
-            <ul class="right-icons">
-              <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-              <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+              <li><a href="mailto:carrentalsapienza@gmail.com"><i class="fa fa-envelope"></i>carrentalsapienza@gmail.com</a></li>
             </ul>
           </div>
         </div>
@@ -56,7 +43,7 @@
     <header class="">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <a class="navbar-brand" href="index.jsp"><h2>Car Rental<em> Website</em></h2></a>
+          <a class="navbar-brand" href="index.jsp"><h2>Car Rental</h2></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -68,7 +55,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="fleet.jsp">Fleet</a>
+                <a class="nav-link" href="miei-ordini.jsp">I Miei Ordini</a>
               </li>
               <li class="nav-item dropdown active">
                 <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">About</a>
@@ -79,7 +66,7 @@
                 </div>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="contact.jsp">Contact Us</a>
+                <a class="nav-link" href="contact.jsp">Contattaci</a>
               </li>
             </ul>
           </div>
@@ -93,7 +80,6 @@
         <div class="row">
           <div class="col-md-12">
             <h1>Team</h1>
-            <span>Our professional team members</span>
           </div>
         </div>
       </div>
@@ -104,13 +90,12 @@
         <div class="row">
           <div class="col-md-12">
             <div class="section-heading">
-              <h2>Our team <em>members</em></h2>
-              <span>Suspendisse a ante in neque iaculis lacinia</span>
+              <h2>Il nostro Team</h2>
             </div>
           </div>
           <div class="col-md-4">
             <div class="team-item">
-              <img src="../assets/images/team-image-1-646x680.jpg" alt="">
+              <img src="https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?w=2000" alt="">
               <div class="down-content">
                 <h4>William Smith</h4>
                 <span>Co-Founder</span>

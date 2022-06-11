@@ -34,7 +34,6 @@ public class FilterCar extends HttpServlet {
             String drop_location = req.getParameter("locationDrop");
             Date pickUp = new SimpleDateFormat("dd/MM/yyyy").parse(req.getParameter("pickUp"));
             Date dropOff = new SimpleDateFormat("dd/MM/yyyy").parse(req.getParameter("dropOff"));
-            System.out.println(pickUp+""+dropOff);
             ArrayList<ArrayList<String>> veicoliDisponibili = dbOperations.getAvailableVeicoli(pickUp,dropOff);
             if(veicoliDisponibili.isEmpty()){
                 ServletUtility.setErrorMessage("Non ci sono vetture disponibili per la data scelta",req);
