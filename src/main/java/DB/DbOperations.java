@@ -278,7 +278,7 @@ public class DbOperations {
     {
         boolean error = false;
         try {
-            result = connect.getConnection().prepareStatement("UPDATE public.macchine SET is_commentato = ?, commento = ? where id=?");
+            result = connect.getConnection().prepareStatement("UPDATE public.ordini SET is_commentato = ?, commento = ? where id=?");
             result.setString(1, "1");
             result.setString(2, commento);
             result.setInt(3, id);
