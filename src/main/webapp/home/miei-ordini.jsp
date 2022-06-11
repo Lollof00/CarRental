@@ -131,7 +131,6 @@
                             </p>
                             <p>
                                 <i class="fa fa-map-marker" aria-hidden="true"></i> <%=veicolo.get(15)%> - <%=veicolo.get(11)%>
-                                <p>Cristaccio</p>
                             </p>
 
                             <%
