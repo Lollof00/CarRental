@@ -27,6 +27,7 @@ public class commento extends HttpServlet {
         if (!dbOperations.aggiungiCommento(com, Integer.parseInt(ida)))
         {
             System.out.println("Commento inviato con successo");
+            resp.sendRedirect("miei-ordini.jsp");
         }
 
 
