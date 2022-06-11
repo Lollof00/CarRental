@@ -134,7 +134,7 @@
                             </p>
 
                             <%
-                                if (veicolo.get(19).equals("0"))
+                                if (veicolo.get(20).equals("0"))
                                 {
                                     %>
                                 <p>
@@ -148,7 +148,7 @@
                             %>
                                 <p>
                                     Commento effettuato:
-                                    <%=veicolo.get(20)%>
+                                    <%=veicolo.get(19)%>
                                 </p>
                             <%
                                 }
