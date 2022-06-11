@@ -278,13 +278,34 @@ public class DbOperations {
 
     public Boolean aggiungiCommento(String commento, int id)
     {
-        System.out.println(id);
+        System.out.println(id + " " + commento);
         boolean error = false;
         try {
-            result = connect.getConnection().prepareStatement("UPDATE public.ordini SET is_commentato = ?, commento = ? where id=?");
-            result.setString(1, "1");
-            result.setString(2, commento);
-            result.setInt(3, id);
+            result = connect.getConnection().prepareStatement("SELECT * from public.ordini");
+            ResultSet resultSet = result.executeQuery();
+            ResultSetMetaData rsmd = resultSet.getMetaData();
+            while (resultSet.next())
+            {
+                if(resultSet.getInt(1) == id)
+                {
+                    result = connect.getConnection().prepareStatement("UPDATE public.ordini SET id=?, id_macchina=?, return_location=?, full_name=?, email=?, phone=?, pick_up_location=?, inizio=?, fine=?, utente=?, commento=?, is_commentato=? where id=?");
+                    result.setInt(1, id);
+                    result.setInt(2, resultSet.getInt(2));
+                    result.setString(3, resultSet.getString(3));
+                    result.setString(4, resultSet.getString(4));
+                    result.setString(5, resultSet.getString(5));
+                    result.setString(6, resultSet.getString(6));
+                    result.setString(7, resultSet.getString(7));
+                    result.setDate(8, Date.valueOf(resultSet.getString(8)));
+                    result.setDate(9, Date.valueOf(resultSet.getString(9)));
+                    result.setString(10, resultSet.getString(10));
+                    result.setString(11, commento);
+                    result.setString(12, "1");
+                    result.setInt(13, id);
+                    result.executeUpdate();
+                }
+            }
+
         }catch (SQLException e) {
             throw new RuntimeException(e);
         }
