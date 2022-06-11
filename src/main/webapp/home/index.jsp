@@ -137,7 +137,7 @@
     <div class="container-fluid bg-white pt-3 px-lg-5">
       <div class="row mx-n2">
         <div class="col-xl-2 col-lg-4 col-md-6 px-2">
-          <select class="custom-select px-4 mb-3" style="height: 50px;" name="locationPick">
+          <select class="custom-select px-4 mb-3" style="height: 50px;" name="locationPick" required>
             <option selected>Pickup Location</option>
             <option value="Roma Leonardo Da Vinci">Roma Leonardo Da Vinci</option>
             <option value="Catania TorreRossa">Catania TorreRossa</option>
@@ -145,7 +145,7 @@
           </select>
         </div>
         <div class="col-xl-2 col-lg-4 col-md-6 px-2">
-          <select class="custom-select px-4 mb-3" style="height: 50px;" name="locationDrop">
+          <select class="custom-select px-4 mb-3" style="height: 50px;" name="locationDrop" required>
             <option selected>Drop Location</option>
             <option value="Milano Malpensa">Milano Malpensa</option>
             <option value="Bologna Guielmo Marconi">Bologna Guielmo Marconi</option>
