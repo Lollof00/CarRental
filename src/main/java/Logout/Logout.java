@@ -12,7 +12,12 @@ public class Logout extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getSession().invalidate();
-        resp.sendRedirect("home/login-user.jsp");
+        if (req.getSession().getAttribute("ruolo").equals("user")){
+            req.getSession().invalidate();
+            resp.sendRedirect("home/login-user.jsp");
+        }else {
+            req.getSession().invalidate();
+            resp.sendRedirect("login-admin.jsp");
+        }
     }
 }

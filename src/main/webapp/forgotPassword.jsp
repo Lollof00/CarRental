@@ -19,8 +19,6 @@
       <div class="card">
         <div class="card-header">
           <h3>Hai dimenticato la password?</h3>
-          <h6 style="color: red;"><%= ServletUtility.getErrorMessage(request) %></h6>
-          <h6 style="color: green;"><%= ServletUtility.getSuccessMessage(request)%></h6>
         </div>
         <div class="card-body">
           <form method="post" action="ForgetPassword">
@@ -34,6 +32,8 @@
               <input type="submit" value="Ripristina" class="btn float-right login_btn">
             </div>
           </form>
+          <h6 style="color: red;"><%= ServletUtility.getErrorMessage(request) %></h6>
+          <h6 style="color: green;"><%= ServletUtility.getSuccessMessage(request)%></h6>
         </div>
       </div>
     </div>
