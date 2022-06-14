@@ -15,13 +15,11 @@
 
 
 
-    <!-- Bootstrap core CSS -->
-    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="../assets/css/fontawesome.css">
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/owl.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/fontawesome.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/owl.css">
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 
@@ -29,7 +27,6 @@
 
 <body>
 
-<!-- ***** Preloader Start ***** -->
 <div id="preloader">
     <div class="jumper">
         <div></div>
@@ -37,9 +34,7 @@
         <div></div>
     </div>
 </div>
-<!-- ***** Preloader End ***** -->
 
-<!-- Header -->
 <div class="sub-header">
     <div class="container">
         <div class="row">
@@ -100,8 +95,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>Fleet</h1>
-                <span>Lorem ipsum dolor sit amet.</span>
+                <h1>I miei ordini</h1>
             </div>
         </div>
     </div>
@@ -118,7 +112,7 @@
             <div class="col-md-4" id="col">
                 <form action="${pageContext.request.contextPath}/commento" method="post">
                     <div class="service-item">
-                        <img class="immagine" src="../carImage/<%=veicolo.get(8)%>" width="200" height="200">
+                        <img class="immagine" src="${pageContext.request.contextPath}/carImage/<%=veicolo.get(8)%>" width="200" height="200">
                         <div class="down-content">
                             <input type="hidden" name="id" value="<%=veicolo.get(0)%>">
                             <h4><%=veicolo.get(1)%></h4>
@@ -146,8 +140,6 @@
                                     <input type="text" maxlength="1000" name="commento" placeholder="Aggiungi un commento">
                                     <input type="hidden" name="ida" value="<%=veicolo.get(9)%>">
                                     <button type="submit" class="btn btn-primary">Aggiungi commento</button>
-                                    <h6 style="color: red;"><%= ServletUtility.getErrorMessage(request) %></h6>
-                                    <h6 style="color: green;"><%= ServletUtility.getSuccessMessage(request)%></h6>
                                 </p>
 
                             <%
@@ -158,6 +150,8 @@
                                     Commento effettuato:
                                     <%=veicolo.get(19)%>
                                 </p>
+                            <h6 style="color: red;"><%= ServletUtility.getErrorMessage(request) %></h6>
+                            <h6 style="color: green;"><%= ServletUtility.getSuccessMessage(request)%></h6>
                             <%
                                 }
                             %>
@@ -204,7 +198,6 @@
 </div>
 </div>
 
-<!-- Footer Starts Here -->
 <div class="sub-footer">
     <div class="container">
         <div class="row">
@@ -212,7 +205,6 @@
     </div>
 </div>
 
-<!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="margin-top: 70px;">
     <div class="modal-dialog modal-lg" role="document">
         <form method="get" action="bookNow">
@@ -259,33 +251,8 @@
     </div>
 </div>
 
-<!-- Modal
-<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="margin-top: 70px;">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <form>
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel2">Preferiti</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        La macchina e' stata aggiunta ai preferiti.
-      </div>
-      <div class="modal-footer">
-        <button type="submit" class="btn btn-secondary" data-dismiss="modal">Chiudi</button>
-        <button type="submit" class="btn btn-primary">Vai ai preferiti</button>
-      </div>
-      </form>
-    </div>
-  </div>
-</div>
-ciao
 
--->
 
-<!-- Bootstrap core JavaScript -->
 <script>
     $("#now").on("click", function ()
     {
@@ -293,25 +260,15 @@ ciao
         $("#macchinaId").attr("value", id);
     })
 </script>
-<script src="../vendor/jquery/jquery.min.js"></script>
-<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="${pageContext.request.contextPath}/vendor/jquery/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-<!-- Additional Scripts -->
-<script src="../assets/js/custom.js"></script>
-<script src="../assets/js/owl.js"></script>
-<script src="../assets/js/slick.js"></script>
-<script src="../assets/js/accordions.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/custom.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/owl.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/slick.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/accordions.js"></script>
 
-<script language = "text/Javascript">
-    cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
-    function clearField(t){                   //declaring the array outside of the
-        if(! cleared[t.id]){                      // function makes it static and global
-            cleared[t.id] = 1;  // you could use true and false, but that's more typing
-            t.value='';         // with more chance of typos
-            t.style.color='#fff';
-        }
-    }
-</script>
+
 
 </body>
 </html>

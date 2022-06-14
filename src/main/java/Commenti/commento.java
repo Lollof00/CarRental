@@ -1,6 +1,7 @@
 package Commenti;
 
 import DB.DbOperations;
+import Utility.ServletUtility;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -27,8 +28,13 @@ public class commento extends HttpServlet {
 
         if (!dbOperations.aggiungiCommento(com, Integer.parseInt(ida)))
         {
-            System.out.println("Commento inviato con successo");
-            resp.sendRedirect("home/miei-ordini.jsp");
+            //System.out.println("Commento inviato con successo");
+            //resp.sendRedirect("home/miei-ordini.jsp");
+            ServletUtility.setSuccessMessage("Commento inserito",req);
+            req.getRequestDispatcher("home/miei-ordini.jsp").forward(req,resp);
+        }else {
+            ServletUtility.setErrorMessage("Qualcosa è andato storto",req);
+            req.getRequestDispatcher("home/miei-ordini.jsp").forward(req,resp);
         }
 
 
