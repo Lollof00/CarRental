@@ -159,7 +159,7 @@
                   <input type="hidden" name="id" value="<%=veicolo.get(0)%>">
                   <h4><%=veicolo.get(1)%></h4>
                   <div style="margin-bottom:10px;">
-                    <span>from <sup>$</sup><%=veicolo.get(4)%> per weekend</span>
+                    <span>Da <sup>$</sup><%=veicolo.get(4)%> al giorno</span>
                   </div>
                   <p>
                     <i class="fa fa-user" title="passegengers"></i> <%=veicolo.get(5)%> &nbsp;&nbsp;&nbsp;

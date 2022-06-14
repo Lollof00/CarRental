@@ -1,3 +1,4 @@
+<%@ page import="DB.DbOperations" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -89,6 +90,9 @@
       </div>
     </div>
 
+    <%
+        DbOperations dbOperations = new DbOperations();
+    %>
     <div class="fun-facts">
       <div class="container">
         <div class="row">
@@ -103,26 +107,26 @@
             <div class="row">
               <div class="col-md-6">
                 <div class="count-area-content">
-                  <div class="count-digit">100000</div>
-                  <div class="count-title">Miles driven</div>
+                  <div class="count-digit"><%=dbOperations.conteggioMacchine()%></div>
+                  <div class="count-title">Macchine</div>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="count-area-content">
-                  <div class="count-digit">1280</div>
-                  <div class="count-title">Happy clients</div>
+                  <div class="count-digit"><%=dbOperations.conteggioOrdini()%></div>
+                  <div class="count-title">Ordini</div>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="count-area-content">
-                  <div class="count-digit">12</div>
-                  <div class="count-title">Cities</div>
+                  <div class="count-digit"><%=dbOperations.conteggioCommenti()%></div>
+                  <div class="count-title">Commenti</div>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="count-area-content">
-                  <div class="count-digit">26</div>
-                  <div class="count-title">Cars</div>
+                  <div class="count-digit"><%=dbOperations.conteggioUtenti()%></div>
+                  <div class="count-title">Utenti</div>
                 </div>
               </div>
             </div>

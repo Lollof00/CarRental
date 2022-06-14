@@ -312,6 +312,95 @@ public class DbOperations {
         return error;
     }
 
+    // le query del conteggio potevano essere fatte anche con SELECT COUNT
+
+    public int conteggioMacchine()
+    {
+        int numeroMacchine = 0;
+        try {
+            result = connect.getConnection().prepareStatement("SELECT * from public.macchine");
+            ResultSet resultSet = result.executeQuery();
+            while (resultSet.next())
+            {
+                numeroMacchine++;
+            }
+
+        }catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return numeroMacchine;
+    }
+
+    public int conteggioOrdini()
+    {
+        int numeroOrdini = 0;
+        try {
+            result = connect.getConnection().prepareStatement("SELECT * from public.ordini");
+            ResultSet resultSet = result.executeQuery();
+            while (resultSet.next())
+            {
+                numeroOrdini++;
+            }
+
+        }catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return numeroOrdini;
+    }
+
+    public int conteggioCommenti()
+    {
+        int numeroCommenti = 0;
+        try {
+            result = connect.getConnection().prepareStatement("SELECT * from public.ordini " +
+                    "WHERE ordini.is_commentato = '1'");
+            ResultSet resultSet = result.executeQuery();
+            while (resultSet.next())
+            {
+                numeroCommenti++;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return numeroCommenti;
+    }
+
+    public int conteggioUtenti()
+    {
+        int numeroUtenti = 0;
+        try {
+            result = connect.getConnection().prepareStatement("SELECT * from public.utenti " +
+                    "WHERE utenti.ruolo = 'user'");
+            ResultSet resultSet = result.executeQuery();
+            while (resultSet.next())
+            {
+                numeroUtenti++;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return numeroUtenti;
+    }
+
+    public ArrayList<ArrayList<String>> getCommentiUtenti()
+    {
+        ArrayList<ArrayList<String>> commenti = new ArrayList<>();
+        try{
+            result = connect.getConnection().prepareStatement("SELECT utente, commento FROM public.ordini WHERE ordini.is_commentato = '1'");
+            ResultSet resultSet = result.executeQuery();
+            while (resultSet.next())
+            {
+                ArrayList<String> riga = new ArrayList<>();
+                riga.add(resultSet.getString("utente"));
+                riga.add(resultSet.getString("commento"));
+                commenti.add(riga);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return commenti;
+    }
+
 
 }
 
