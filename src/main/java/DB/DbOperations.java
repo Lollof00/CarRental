@@ -312,7 +312,7 @@ public class DbOperations {
         return error;
     }
 
-    // le query del conteggio potevano essere fatte anche con SELECT COUNT
+    // le query del conteggio potevano essere fatte anche con SELECT COUNT(*)
 
     public int conteggioMacchine()
     {
