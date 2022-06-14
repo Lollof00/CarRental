@@ -45,7 +45,7 @@ public class Book extends HttpServlet {
 
         try {
 
-            if(!dbOperations.aggiungiOrdine(new java.sql.Date(pick_date.getTime()), (String) session.getAttribute("username"),  new java.sql.Date(drop_date.getTime()), id_macchina, drop_location, full_name, email, phone, pick_location)){
+            if(!dbOperations.aggiungiOrdine(new java.sql.Date(pick_date.getTime()), (String) session.getAttribute("username"),  new java.sql.Date(drop_date.getTime()), id_macchina, drop_location, full_name, email, phone, pick_location,"","0")){
                session.setAttribute("bookSuccess","Prenotazione Effettuata");;
                Calendar pick_date_calendar = Calendar.getInstance();
                pick_date_calendar.setTime(pick_date);

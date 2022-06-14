@@ -1,5 +1,6 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="DB.DbOperations" %>
+<%@ page import="Utility.ServletUtility" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +13,7 @@
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
-    <title>PHPJabbers.com | Free Car Rental Website Template</title>
+
 
     <!-- Bootstrap core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -50,7 +51,7 @@
             </div>
             <div class="col-md-4">
                 <ul class="right-icons">
-                    <form action="preferiti" method="get"><li><button type="submit"><i class="fa fa-star" aria-hidden="true"></i></button></li></form>
+                    <form action="${pageContext.request.contextPath}/preferiti" method="get"><li><button type="submit"><i class="fa fa-star" aria-hidden="true"></i></button></li></form>
                 </ul>
             </div>
         </div>
@@ -137,11 +138,15 @@
                                 if (veicolo.get(20).equals("0"))
                                 {
                                     %>
+
                                 <p>
                                     <input type="text" maxlength="1000" name="commento" placeholder="Aggiungi un commento">
                                     <input type="hidden" name="ida" value="<%=veicolo.get(9)%>">
                                     <button type="submit" class="btn btn-primary">Aggiungi commento</button>
+                                    <h6 style="color: red;"><%= ServletUtility.getErrorMessage(request) %></h6>
+                                    <h6 style="color: green;"><%= ServletUtility.getSuccessMessage(request)%></h6>
                                 </p>
+
                             <%
                                 }else {
 

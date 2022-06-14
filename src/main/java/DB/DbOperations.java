@@ -142,12 +142,12 @@ public class DbOperations {
     }
 
 
-    public Boolean aggiungiOrdine(Date inizio, String utente, Date fine, String id_macchina, String ret_location, String full_name, String email, String phone, String pick_up_location) throws SQLException
+    public Boolean aggiungiOrdine(Date inizio, String utente, Date fine, String id_macchina, String ret_location, String full_name, String email, String phone, String pick_up_location, String commento, String flag) throws SQLException
     {
         boolean error = false;
             try{
 
-                result = connect.getConnection().prepareStatement("INSERT into public.ordini(id,id_macchina,return_location,full_name,email,phone,pick_up_location,inizio,fine,utente,commento,is_commentato) values (DEFAULT,?,?,?,?,?,?,?,?,?.?,?)");
+                result = connect.getConnection().prepareStatement("INSERT into public.ordini(id,id_macchina,return_location,full_name,email,phone,pick_up_location,inizio,fine,utente,commento,is_commentato) values (DEFAULT,?,?,?,?,?,?,?,?,?,?,?)");
                 result.setInt(1, Integer.parseInt(id_macchina));
                 result.setString(2,ret_location);
                 result.setString(3, full_name);

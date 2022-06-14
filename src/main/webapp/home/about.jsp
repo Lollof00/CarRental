@@ -59,7 +59,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="miei-ordini.jsp.jsp">I miei Ordini</a>
+                <a class="nav-link" href="miei-ordini.jsp">I miei Ordini</a>
               </li>
               <li class="nav-item dropdown active">
                 <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">About</a>
