@@ -89,35 +89,35 @@ public class DbOperations {
     }
 
     public boolean UpdateVeicoli(String[] veicoli){
+        System.out.println(Arrays.toString(Arrays.stream(veicoli).toArray()));
         boolean error=false;
         try {
             result = connect.getConnection().prepareStatement("SELECT * from public.macchine where id=?");
             result.setInt(1, Integer.parseInt(veicoli[0]));
             ResultSet resultSet = result.executeQuery();
             if (resultSet.next()){
-            result = connect.getConnection().prepareStatement("UPDATE public.macchine SET modello=?,produttore=?,targa=?,giornaliero=?,passeggeri=?,porte=?,bagagli=?,image=? where id=?");
+            result = connect.getConnection().prepareStatement("UPDATE public.macchine SET modello=?,targa=?,giornaliero=?,passeggeri=?,porte=?,bagagli=?,image=?,produttore=? where id=?");
             result.setInt(9, Integer.parseInt(veicoli[0]));
-
             result.setString(1,veicoli[1]);
-            result.setInt(2, Integer.parseInt(veicoli[2]));
-            result.setString(3, veicoli[3].toUpperCase());
-            result.setDouble(4, Double.parseDouble(veicoli[4]));
-            result.setInt(5, Integer.parseInt(veicoli[5]));
-            result.setInt(6, Integer.parseInt(veicoli[6]));
-            result.setInt(7, Integer.parseInt(veicoli[7]));
-            result.setString(8,veicoli[8]);
+            result.setString(2, veicoli[3].toUpperCase());
+            result.setDouble(3, Double.parseDouble(veicoli[4]));
+            result.setInt(4, Integer.parseInt(veicoli[5]));
+            result.setInt(5, Integer.parseInt(veicoli[6]));
+            result.setInt(6, Integer.parseInt(veicoli[7]));
+            result.setString(7,veicoli[8]);
+            result.setString(8,veicoli[2]);
             result.executeUpdate();
             }else {
-                result = connect.getConnection().prepareStatement("INSERT into public.macchine(id,modello,produttore,targa,giornaliero,passeggeri,porte,bagagli,image) values (?,?,?,?,?,?,?,?,?)");
+                result = connect.getConnection().prepareStatement("INSERT into public.macchine(id,modello,targa,giornaliero,passeggeri,porte,bagagli,image,produttore) values (?,?,?,?,?,?,?,?,?)");
                 result.setInt(1, Integer.parseInt(veicoli[0]));
                 result.setString(2,veicoli[1]);
-                result.setInt(3, Integer.parseInt(veicoli[2]));
-                result.setString(4, veicoli[3]);
-                result.setDouble(5, Double.parseDouble(veicoli[4]));
-                result.setInt(6, Integer.parseInt(veicoli[5]));
-                result.setInt(7, Integer.parseInt(veicoli[6]));
-                result.setInt(8, Integer.parseInt(veicoli[7]));
-                result.setString(9, veicoli[8]);
+                result.setString(3, veicoli[3].toUpperCase());
+                result.setDouble(4, Double.parseDouble(veicoli[4]));
+                result.setInt(5, Integer.parseInt(veicoli[5]));
+                result.setInt(6, Integer.parseInt(veicoli[6]));
+                result.setInt(7, Integer.parseInt(veicoli[7]));
+                result.setString(8, veicoli[8]);
+                result.setString(9, veicoli[2]);
                 result.executeUpdate();
             }
 

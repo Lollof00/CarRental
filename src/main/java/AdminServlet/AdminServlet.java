@@ -33,10 +33,10 @@ public class AdminServlet extends HttpServlet {
         System.out.println(id);
         if(!dbOperations.DeleteVeicoli(Integer.valueOf(id))){
             ServletUtility.setSuccessMessage("Eliminazione effettuata",req);
-            req.getRequestDispatcher("admin-page.jsp").forward(req,resp);
+            req.getRequestDispatcher("admin/admin-page.jsp").forward(req,resp);
         }else {
             ServletUtility.setErrorMessage("L'eliminazione non è andata a buon fine",req);
-            req.getRequestDispatcher("admin-page.jsp").forward(req,resp);
+            req.getRequestDispatcher("admin/admin-page.jsp").forward(req,resp);
         }
     }
 
@@ -44,11 +44,11 @@ public class AdminServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String[] data = req.getParameterValues("d[]");
         if(!dbOperations.UpdateVeicoli(data)){
-            ServletUtility.setSuccessMessage("Modifica effettuata",req);
-            req.getRequestDispatcher("admin-page.jsp").forward(req,resp);
+            ServletUtility.setSuccessMessage("Inserimento o modifica effettuata",req);
+            req.getRequestDispatcher("admin/admin-page.jsp").forward(req,resp);
         }else{
-            ServletUtility.setErrorMessage("La modifica non è andata a buon fine",req);
-            req.getRequestDispatcher("admin-page.jsp").forward(req,resp);
+            ServletUtility.setErrorMessage("L'inserimento o la modifica non è andata a buon fine",req);
+            req.getRequestDispatcher("admin/admin-page.jsp").forward(req,resp);
         }
 
     }

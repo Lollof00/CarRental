@@ -14,7 +14,6 @@
 
     <title>Sezione Admin</title>
 
-    <!-- Bootstrap core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -22,7 +21,6 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    <!-- Additional CSS Files -->
     <link rel="stylesheet" href="../assets/css/fontawesome.css">
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/owl.css">
@@ -109,7 +107,6 @@
 
 <body>
 
-<!-- ***** Preloader Start ***** -->
 <div id="preloader">
     <div class="jumper">
         <div></div>
@@ -117,40 +114,36 @@
         <div></div>
     </div>
 </div>
-<!-- ***** Preloader End ***** -->
 
-<!-- Header -->
-<div class="sub-header">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-xs-12">
-                <ul class="left-info">
-                    <li><%=request.getSession().getAttribute("username")%></li>
-                    <li><a href="../register-admin.jsp">Registra nuovo Admin</a></li>
-                    <li><a href="Admin-ordini.jsp">Ordini</a></li>
+<header class="">
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="index.jsp"><h2>Car Rental</h2></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><b><%=request.getSession().getAttribute("username")%></b>
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/register-admin.jsp">Registra nuovo Admin</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Admin-ordini.jsp">Storico Ordini</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="${pageContext.request.contextPath}/logout">Logout</a>
                     </li>
                 </ul>
             </div>
         </div>
-    </div>
-</div>
-
-<header class="">
-    <nav class="navbar navbar-expand-lg">
-        <div class="container">
-            <a class="navbar-brand" href="../home/index.jsp"><h2>Car Rental<em></em></h2></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-            </div>
-        </div>
     </nav>
 </header>
 
-<!-- Page Content -->
 <div class="page-heading header-text">
     <div class="container">
         <div class="row">
@@ -167,7 +160,6 @@
                 $(document).ready(function(){
                     $('[data-toggle="tooltip"]').tooltip();
                     var actions = $("table td:last-child").html();
-                    // Append table with add row form on add new button click
                     $(".add-new").click(function(){
                         $(this).attr("disabled", "disabled");
                         var index = $("table tbody tr:last-child").index();
@@ -190,7 +182,6 @@
 
                         });
                     });
-                    // Add row on add button click
                     $(document).on("click", ".add", function(){
                         var empty = false;
                         var input = $(this).parents("tr").find('input[type="text"],input[type="file"]');
@@ -270,7 +261,7 @@
                             });
                             $.ajax({
                                 type: "POST",
-                                url: "AdminServlet",
+                                url: "../AdminServlet",
                                 dataType: "json",
                                 data: {d:toEdit},
                             });
@@ -279,7 +270,6 @@
                             location.reload()
                         }
                     });
-                    // Edit row on edit button click
                     $(document).on("click", ".edit", function(){
                         $(this).parents("tr").find("td:not(:last-child)").each(function(i){
                             if(i===8){
@@ -292,14 +282,13 @@
                         $(this).parents("tr").find(".add, .edit").toggle();
                         $(".add-new").attr("disabled", "disabled");
                     });
-                    // Delete row on delete button click
                     $(document).on("click", ".delete", function(){
                         $(this).parents("tr").find("td:not(:last-child)").each(function(i,el){
                             if(i===0){
                                 var id = $(this).text()
                                 $.ajax({
                                     type: "get",
-                                    url: "AdminServlet",
+                                    url: "../AdminServlet",
                                     data: {id:id}
                                 });
                             }
@@ -344,13 +333,13 @@
                         <tr>
                             <td><%=veicolo.get(0)%></td>
                             <td><%=veicolo.get(1)%></td>
+                            <td><%=veicolo.get(8)%></td>
                             <td><%=veicolo.get(2)%></td>
                             <td><%=veicolo.get(3)%></td>
                             <td><%=veicolo.get(4)%></td>
                             <td><%=veicolo.get(5)%></td>
                             <td><%=veicolo.get(6)%></td>
-                            <td><%=veicolo.get(7)%></td>
-                            <td><img src="../carImage/<%=veicolo.get(8)%>" width="100" height="100"></td>
+                            <td><img src="../carImage/<%=veicolo.get(7)%>" width="100" height="100"></td>
                             <td>
                                 <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
                                 <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>

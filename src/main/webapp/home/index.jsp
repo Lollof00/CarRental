@@ -259,7 +259,7 @@
         <div class="row">
           <div class="col-md-12">
             <p>
-                Copyright © 2022 Car Rental
+
             </p>
           </div>
         </div>

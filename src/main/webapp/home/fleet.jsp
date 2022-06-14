@@ -157,16 +157,16 @@
           <div class="col-md-4" id="col">
             <form action="${pageContext.request.contextPath}/preferiti" method="post">
               <div class="service-item">
-                <img class="immagine" src="../carImage/<%=veicolo.get(8)%>" width="200" height="200">
+                <img class="immagine" src="../carImage/<%=veicolo.get(7)%>" width="200" height="200">
                 <div class="down-content">
                   <input type="hidden" name="id" value="<%=veicolo.get(0)%>">
                   <h4><%=veicolo.get(1)%></h4>
                   <div style="margin-bottom:10px;">
-                    <span>Da <sup>$</sup><%=veicolo.get(4)%> al giorno</span>
+                    <span>Da <sup>$</sup><%=veicolo.get(3)%> al giorno</span>
                   </div>
                   <p>
-                    <i class="fa fa-user" title="passegengers"></i> <%=veicolo.get(5)%> &nbsp;&nbsp;&nbsp;
-                    <i class="fa fa-briefcase" title="luggages"></i> <%=veicolo.get(7)%> &nbsp;&nbsp;&nbsp;
+                    <i class="fa fa-user" title="passegengers"></i> <%=veicolo.get(4)%> &nbsp;&nbsp;&nbsp;
+                    <i class="fa fa-briefcase" title="luggages"></i> <%=veicolo.get(5)%> &nbsp;&nbsp;&nbsp;
                     <i class="fa fa-sign-out" title="doors"></i> <%=veicolo.get(6)%> &nbsp;&nbsp;&nbsp;
                   </p>
                   <a href="#" data-toggle="modal" data-target="#exampleModal" class="filled-button" data="<%=veicolo.get(0)%>" id="modalBook">Prenota ora</a>

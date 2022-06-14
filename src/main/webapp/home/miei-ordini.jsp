@@ -40,7 +40,7 @@
         <div class="row">
             <div class="col-md-8 col-xs-12">
                 <ul class="left-info">
-                    <li><a href="#"><i class="fa fa-envelope"></i>carental@gmail.com</a></li>
+                    <li><a href="mailto:carrentalsapienza@gmail.com"><i class="fa fa-envelope"></i>carrentalsapienza@gmail.com</a></li>
                     <li><a href="#"><i class="fa fa-phone"></i>123-456-7890</a></li>
                 </ul>
             </div>
@@ -56,7 +56,7 @@
 <header class="">
     <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <a class="navbar-brand" href="index.jsp"><h2>Car Rental<em> Website</em></h2></a>
+            <a class="navbar-brand" href="index.jsp"><h2>Car Rental<em></em></h2></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -79,7 +79,7 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.jsp">Contact Us</a>
+                        <a class="nav-link" href="contact.jsp">Contattaci</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="${pageContext.request.contextPath}/logout">Logout</a>
@@ -90,7 +90,6 @@
     </nav>
 </header>
 
-<!-- Page Content -->
 <div class="page-heading header-text">
     <div class="container">
         <div class="row">
@@ -106,22 +105,20 @@
         <div class="row">
             <% DbOperations dbOperations = new DbOperations();
                 ArrayList<ArrayList<String>> veicoli = dbOperations.getOrdiniUtente((String) session.getAttribute("username"));
+                System.out.println(veicoli);
                 for(ArrayList<String> veicolo : veicoli){
             %>
 
             <div class="col-md-4" id="col">
                 <form action="${pageContext.request.contextPath}/commento" method="post">
                     <div class="service-item">
-                        <img class="immagine" src="${pageContext.request.contextPath}/carImage/<%=veicolo.get(8)%>" width="200" height="200">
+                        <img class="immagine" src="${pageContext.request.contextPath}/carImage/<%=veicolo.get(7)%>" width="200" height="200">
                         <div class="down-content">
                             <input type="hidden" name="id" value="<%=veicolo.get(0)%>">
                             <h4><%=veicolo.get(1)%></h4>
-                            <div style="margin-bottom:10px;">
-                                <span>Da <sup>$</sup><%=veicolo.get(4)%> al giorno</span>
-                            </div>
                             <p>
-                                <i class="fa fa-user" title="passegengers"></i> <%=veicolo.get(5)%> &nbsp;&nbsp;&nbsp;
-                                <i class="fa fa-briefcase" title="luggages"></i> <%=veicolo.get(7)%> &nbsp;&nbsp;&nbsp;
+                                <i class="fa fa-user" title="passegengers"></i> <%=veicolo.get(4)%> &nbsp;&nbsp;&nbsp;
+                                <i class="fa fa-briefcase" title="luggages"></i> <%=veicolo.get(5)%> &nbsp;&nbsp;&nbsp;
                                 <i class="fa fa-sign-out" title="doors"></i> <%=veicolo.get(6)%> &nbsp;&nbsp;&nbsp;
                             </p>
                             <p>
@@ -205,51 +202,6 @@
     </div>
 </div>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="margin-top: 70px;">
-    <div class="modal-dialog modal-lg" role="document">
-        <form method="get" action="bookNow">
-            <input type="hidden" value="" id="macchinaId" name="macchinaId">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Book Now</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-
-                    <div class="form-group">
-                        <fieldset>
-                            <input type="text" class="form-control" placeholder="Enter full name" name="full-name" required="">
-                        </fieldset>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <fieldset>
-                                    <input type="text" class="form-control" placeholder="Enter email address" name="email" required="">
-                                </fieldset>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <fieldset>
-                                    <input type="text" class="form-control" placeholder="Enter phone" name="phone" required="">
-                                </fieldset>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-primary" id="now">Book Now</button>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
 
 
 

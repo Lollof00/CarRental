@@ -14,7 +14,6 @@
 
     <title>Sezione Admin</title>
 
-    <!-- Bootstrap core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -22,7 +21,6 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    <!-- Additional CSS Files -->
     <link rel="stylesheet" href="../assets/css/fontawesome.css">
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/owl.css">
@@ -118,37 +116,35 @@
 </div>
 
 
-<div class="sub-header">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-xs-12">
-                <ul class="left-info">
-                    <li><%=request.getSession().getAttribute("username")%></li>
-                    <li><a href="../register-admin.jsp">Registra nuovo Admin</a></li>
-                    <li><a href="admin-page.jsp">Admin Page</a></li>
+<header class="">
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="index.jsp"><h2>Car Rental</h2></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><b><%=request.getSession().getAttribute("username")%></b>
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/register-admin.jsp">Registra nuovo Admin</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="admin-page.jsp">Admin Page</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="${pageContext.request.contextPath}/logout">Logout</a>
                     </li>
                 </ul>
             </div>
         </div>
-    </div>
-</div>
-
-<header class="">
-    <nav class="navbar navbar-expand-lg">
-        <div class="container">
-            <a class="navbar-brand" href="../home/index.jsp"><h2>Car Rental<em></em></h2></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-            </div>
-        </div>
     </nav>
 </header>
 
-<!-- Page Content -->
 <div class="page-heading header-text">
     <div class="container">
         <div class="row">
