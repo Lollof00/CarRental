@@ -126,7 +126,7 @@
           <div class="col-md-12">
             <div class="section-heading">
               <h2>Mandaci un <em>messaggio</em></h2>
-              <span>Risponderemo il prima possibilee</span>
+              <span>Risponderemo il prima possibile</span>
             </div>
           </div>
           <div class="col-md-12">

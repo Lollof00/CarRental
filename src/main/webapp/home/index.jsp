@@ -227,7 +227,7 @@
           <div class="col-md-12">
             <div class="section-heading">
               <h2>Cosa dicono <em>di noi</em></h2>
-              <span>testimonials dai nostri miglori clienti</span>
+              <span>testimonials dai nostri miglori clientii</span>
             </div>
           </div>
           <div class="col-md-12">
