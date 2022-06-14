@@ -12,10 +12,10 @@
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
-    <title>PHPJabbers.com | Free Car Rental Website Template</title>
+    <title>Sezione Admin</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -23,9 +23,9 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="assets/css/fontawesome.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/owl.css">
+    <link rel="stylesheet" href="../assets/css/fontawesome.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/owl.css">
     <style>
         .table-wrapper {
             width: 1100px;
@@ -125,8 +125,12 @@
         <div class="row">
             <div class="col-md-8 col-xs-12">
                 <ul class="left-info">
-                    <li><a href="register-admin.jsp">Registra nuovo Admin</a></li>
-                    <li><a href="#">Ordini</a></li>
+                    <li><%=request.getSession().getAttribute("username")%></li>
+                    <li><a href="../register-admin.jsp">Registra nuovo Admin</a></li>
+                    <li><a href="Admin-ordini.jsp">Ordini</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/logout">Logout</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -136,7 +140,7 @@
 <header class="">
     <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <a class="navbar-brand" href="home/index.jsp"><h2>Car Rental<em> Website</em></h2></a>
+            <a class="navbar-brand" href="../home/index.jsp"><h2>Car Rental<em></em></h2></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -151,8 +155,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>Fleet</h1>
-                <span>Lorem ipsum dolor sit amet.</span>
+                <h1>Admin Page</h1>
             </div>
         </div>
     </div>
@@ -347,7 +350,7 @@
                             <td><%=veicolo.get(5)%></td>
                             <td><%=veicolo.get(6)%></td>
                             <td><%=veicolo.get(7)%></td>
-                            <td><img src="carImage/<%=veicolo.get(8)%>" width="100" height="100"></td>
+                            <td><img src="../carImage/<%=veicolo.get(8)%>" width="100" height="100"></td>
                             <td>
                                 <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
                                 <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
@@ -368,175 +371,25 @@
     </div>
 </div>
 
-<!-- Footer Starts Here -->
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3 footer-item">
-                <h4>Car Rental Website</h4>
-                <p>Vivamus tellus mi. Nulla ne cursus elit,vulputate. Sed ne cursus augue hasellus lacinia sapien vitae.</p>
-                <ul class="social-icons">
-                    <li><a rel="nofollow" href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                </ul>
-            </div>
-            <div class="col-md-3 footer-item">
-                <h4>Useful Links</h4>
-                <ul class="menu-list">
-                    <li><a href="#">Vivamus ut tellus mi</a></li>
-                    <li><a href="#">Nulla nec cursus elit</a></li>
-                    <li><a href="#">Vulputate sed nec</a></li>
-                    <li><a href="#">Cursus augue hasellus</a></li>
-                    <li><a href="#">Lacinia ac sapien</a></li>
-                </ul>
-            </div>
-            <div class="col-md-3 footer-item">
-                <h4>Additional Pages</h4>
-                <ul class="menu-list">
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">Terms</a></li>
-                </ul>
-            </div>
-            <div class="col-md-3 footer-item last-item">
-                <h4>Contact Us</h4>
-                <div class="contact-form">
-                    <form id="contact footer-contact" action="" method="post">
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                <fieldset>
-                                    <input name="name" type="text" class="form-control" id="name" placeholder="Full Name" required="">
-                                </fieldset>
-                            </div>
-                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                <fieldset>
-                                    <input name="email" type="text" class="form-control" id="email" pattern="[^ @]*@[^ @]*" placeholder="E-Mail Address" required="">
-                                </fieldset>
-                            </div>
-                            <div class="col-lg-12">
-                                <fieldset>
-                                    <textarea name="message" rows="6" class="form-control" id="message" placeholder="Your Message" required=""></textarea>
-                                </fieldset>
-                            </div>
-                            <div class="col-lg-12">
-                                <fieldset>
-                                    <button type="submit" id="form-submit" class="filled-button">Send Message</button>
-                                </fieldset>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
 
 <div class="sub-footer">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <p>
-                    Copyright © 2020 Company Name
-                    - Template by: <a href="https://www.phpjabbers.com/">PHPJabbers.com</a>
-                </p>
+
             </div>
         </div>
     </div>
 </div>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="margin-top: 70px;">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Book Now</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form action="#" id="contact">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <fieldset>
-                                    <input type="text" class="form-control" placeholder="Pick-up location" required="">
-                                </fieldset>
-                            </div>
-                        </div>
 
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <fieldset>
-                                    <input type="text" class="form-control" placeholder="Return location" required="">
-                                </fieldset>
-                            </div>
-                        </div>
-                    </div>
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <fieldset>
-                                    <input type="text" class="form-control" placeholder="Pick-up date/time" required="">
-                                </fieldset>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <fieldset>
-                                    <input type="text" class="form-control" placeholder="Return date/time" required="">
-                                </fieldset>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <fieldset>
-                            <input type="text" class="form-control" placeholder="Enter full name" required="">
-                        </fieldset>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <fieldset>
-                                    <input type="text" class="form-control" placeholder="Enter email address" required="">
-                                </fieldset>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <fieldset>
-                                    <input type="text" class="form-control" placeholder="Enter phone" required="">
-                                </fieldset>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary">Book Now</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Bootstrap core JavaScript -->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-<!-- Additional Scripts -->
-<script src="assets/js/custom.js"></script>
-<script src="assets/js/owl.js"></script>
-<script src="assets/js/slick.js"></script>
-<script src="assets/js/accordions.js"></script>
+<script src="../assets/js/custom.js"></script>
+<script src="../assets/js/owl.js"></script>
+<script src="../assets/js/slick.js"></script>
+<script src="../assets/js/accordions.js"></script>
 
 
 </body>

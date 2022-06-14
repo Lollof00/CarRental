@@ -1,3 +1,4 @@
+<%@ page import="Utility.ServletUtility" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,11 +11,11 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
 
-    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="../assets/css/fontawesome.css">
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/owl.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/fontawesome.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/owl.css">
   </head>
 
   <body>
@@ -66,6 +67,9 @@
               </li>
               <li class="nav-item active">
                 <a class="nav-link" href="contact.jsp">Contattaci</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="${pageContext.request.contextPath}/logout">Logout</a>
               </li>
             </ul>
           </div>
@@ -122,12 +126,12 @@
           <div class="col-md-12">
             <div class="section-heading">
               <h2>Mandaci un <em>messaggio</em></h2>
-              <span>Risponderemo il prima possibile</span>
+              <span>Risponderemo il prima possibilee</span>
             </div>
           </div>
           <div class="col-md-12">
             <div class="contact-form">
-              <form id="contact" action="" method="get">
+              <form id="contact" action="${pageContext.request.contextPath}/contactUs" method="get">
                 <div class="row">
                   <div class="col-lg-4 col-md-12 col-sm-12">
                     <fieldset>
@@ -146,7 +150,7 @@
                   </div>
                   <div class="col-lg-12">
                     <fieldset>
-                      <textarea name="message" rows="6" class="form-control" id="message" placeholder="Il tuo messaggio" required=""></textarea>
+                      <textarea name="message" rows="6" class="form-control" id="message" placeholder="Il tuo messaggio" required></textarea>
                     </fieldset>
                   </div>
                   <div class="col-lg-12">
@@ -156,6 +160,8 @@
                   </div>
                 </div>
               </form>
+              <h6 style="color: red;"><%= ServletUtility.getErrorMessage(request) %></h6>
+              <h6 style="color: green;"><%= ServletUtility.getSuccessMessage(request)%></h6>
             </div>
           </div>
         </div>
@@ -163,12 +169,7 @@
     </div>
 
     <div id="map">
-<!-- How to change your own map point
-	1. Go to Google Maps
-	2. Click on your location point
-	3. Click "Share" and choose "Embed map" tab
-	4. Copy only URL and paste it within the src="" field below
--->
+
       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2099.7505208948583!2d12.512988180390685!3d41.90370225505443!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13258f5b0fe7d911%3A0xed5342b156dcfd2b!2sSapienza%20Universit%C3%A0%20di%20Roma!5e0!3m2!1sit!2sit!4v1655195395487!5m2!1sit!2sit"  width="100%" height="500px" frameborder="0" style="border:0" allowfullscreen></iframe>
     </div>
 
@@ -186,14 +187,14 @@
     </div>
 
     <!-- Bootstrap core JavaScript -->
-    <script src="../vendor/jquery/jquery.min.js"></script>
-    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="${pageContext.request.contextPath}/vendor/jquery/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Additional Scripts -->
-    <script src="../assets/js/custom.js"></script>
-    <script src="../assets/js/owl.js"></script>
-    <script src="../assets/js/slick.js"></script>
-    <script src="../assets/js/accordions.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/custom.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/owl.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/slick.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/accordions.js"></script>
 
   </body>
 </html>

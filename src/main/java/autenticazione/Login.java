@@ -35,6 +35,7 @@ public class Login extends HttpServlet {
             if(dbOperations.Autenticazione(username,password).equals("user")){
                 HttpSession session = req.getSession(true);
                 session.setAttribute("username",username);
+                session.setAttribute("ruolo","user");
                 resp.sendRedirect("home/index.jsp");
             }else{
                 ServletUtility.setErrorMessage("Nome utente o password errati",req);

@@ -30,8 +30,10 @@ public class ForgetPassword extends HttpServlet {
         try {
             EmailUtility.sendMail(emailBean);
             ServletUtility.setSuccessMessage("L'email è stata inviata correttamente",req);
+            req.getRequestDispatcher("forgotPassword.jsp").forward(req,resp);
         } catch (Exception e) {
-           ServletUtility.setErrorMessage("Qualcosa è andato storto",req);
+           ServletUtility.setErrorMessage("Qualcosa è andato storto oppure l'email non è registrata",req);
+           req.getRequestDispatcher("forgotPassword.jsp").forward(req,resp);
         }
     }
 }

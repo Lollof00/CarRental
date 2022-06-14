@@ -21,6 +21,10 @@ public class LoginAdmin extends HttpServlet {
         dbOperations = new DbOperations();
     }
 
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getRequestDispatcher("login-admin.jsp").forward(req,resp);
+    }
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String username = req.getParameter("username");
@@ -28,14 +32,16 @@ public class LoginAdmin extends HttpServlet {
         try {
             if(dbOperations.Autenticazione(username,password).equals("admin")){
                 HttpSession session = req.getSession(true);
-                resp.sendRedirect("admin-page.jsp");
+                session.setAttribute("username",username);
+                session.setAttribute("ruolo","admin");
+                resp.sendRedirect("admin/admin-page.jsp");
             }else{
                 ServletUtility.setErrorMessage("Nome utente o password errati",req);
-                req.getRequestDispatcher("login-admin.jsp").forward(req,resp);
+                req.getRequestDispatcher("admin/login-admin.jsp").forward(req,resp);
             };
         } catch (SQLException e) {
             ServletUtility.setErrorMessage("Qualcosa è andato storto",req);
-            req.getRequestDispatcher("login-admin.jsp").forward(req,resp);
+            req.getRequestDispatcher("admin/login-admin.jsp").forward(req,resp);
         }
 
     }
