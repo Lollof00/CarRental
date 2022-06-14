@@ -401,6 +401,34 @@ public class DbOperations {
         return commenti;
     }
 
+    public ArrayList<ArrayList<String>> getAllOrdini()
+    {
+        ArrayList<ArrayList<String>> AllOrdini = new ArrayList<>();
+        try{
+            result = connect.getConnection().prepareStatement("SELECT * from public.ordini");
+            ResultSet resultSet = result.executeQuery();
+            ResultSetMetaData rsmd = resultSet.getMetaData();
+
+
+            int numColTot = rsmd.getColumnCount();
+            while (resultSet.next())
+            {
+                ArrayList<String> riga = new ArrayList<>();
+                for (int i = 1; i <= numColTot; i++)
+                {
+                    riga.add(resultSet.getString(i));
+                }
+                AllOrdini.add(riga);
+            }
+
+        }catch (SQLException e)
+        {
+            throw new RuntimeException(e);
+        }
+        System.out.println(AllOrdini);
+        return AllOrdini;
+    }
+
 
 }
 
