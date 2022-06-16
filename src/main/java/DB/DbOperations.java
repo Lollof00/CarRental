@@ -429,6 +429,34 @@ public class DbOperations {
         return AllOrdini;
     }
 
+    public ArrayList<ArrayList<String>> getAeroporti()
+    {
+        ArrayList<ArrayList<String>> aereoporti = new ArrayList<>();
+        try{
+            result = connect.getConnection().prepareStatement("SELECT * from public.aereoporti");
+            ResultSet resultSet = result.executeQuery();
+            ResultSetMetaData rsmd = resultSet.getMetaData();
+
+
+            int numColTot = rsmd.getColumnCount();
+            while (resultSet.next())
+            {
+                ArrayList<String> riga = new ArrayList<>();
+                for (int i = 1; i <= numColTot; i++)
+                {
+                    riga.add(resultSet.getString(i));
+                }
+                aereoporti.add(riga);
+            }
+
+        }catch (SQLException e)
+        {
+            throw new RuntimeException(e);
+        }
+
+        return aereoporti;
+    }
+
 
 }
 

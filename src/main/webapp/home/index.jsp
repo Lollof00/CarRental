@@ -140,18 +140,30 @@
       <div class="row mx-n2">
         <div class="col-xl-2 col-lg-4 col-md-6 px-2">
           <select class="custom-select px-4 mb-3" style="height: 50px;" name="locationPick" required>
-            <option selected>Pickup Location</option>
-            <option value="Roma Leonardo Da Vinci">Roma Leonardo Da Vinci</option>
-            <option value="Catania TorreRossa">Catania TorreRossa</option>
-            <option value="Napoli Capodichino">Napoli Capodichino</option>
+          <%
+            DbOperations dbOperations = new DbOperations();
+            ArrayList<ArrayList<String>> aereoportiAndata = dbOperations.getAeroporti();
+            for (ArrayList<String> aereoporto: aereoportiAndata)
+            {
+          %>
+            <option value=<%=aereoporto.get(1)%>><%=aereoporto.get(1)%> (<%=aereoporto.get(3)%>)</option>
+          <%
+            }
+          %>
           </select>
         </div>
         <div class="col-xl-2 col-lg-4 col-md-6 px-2">
           <select class="custom-select px-4 mb-3" style="height: 50px;" name="locationDrop" required>
-            <option selected>Drop Location</option>
-            <option value="Milano Malpensa">Milano Malpensa</option>
-            <option value="Bologna Guielmo Marconi">Bologna Guielmo Marconi</option>
-            <option value="Palermo Falcone e Borsellino">Palermo Falcone e Borsellino</option>
+            <%
+              ArrayList<ArrayList<String>> aereoportiRitorno = dbOperations.getAeroporti();
+              for (ArrayList<String> aereoporto : aereoportiRitorno)
+              {
+
+            %>
+            <option value=<%=aereoporto.get(1)%>><%=aereoporto.get(1)%> (<%=aereoporto.get(3)%>)</option>
+            <%
+              }
+            %>
           </select>
         </div>
         <div class="col-xl-2 col-lg-4 col-md-6 px-2">
@@ -232,7 +244,7 @@
           </div>
           <div class="col-md-12">
             <div class="owl-testimonials owl-carousel">
-              <% DbOperations dbOperations = new DbOperations();
+              <%
                 ArrayList<ArrayList<String>> commenti = dbOperations.getCommentiUtenti();
                 for(ArrayList<String> commento : commenti){
               %>
