@@ -45,11 +45,11 @@ public class Registrazione extends HttpServlet {
             if(path.getFileName().toString().equals("register.jsp")) {
                 dbOperations.Registrazione(nome, cognome, cf, nascita, email, username, password,ruolo.user);
                 HttpSession session = req.getSession(true);
-                resp.sendRedirect("index.jsp");
+                resp.sendRedirect("home/index.jsp");
             }else{
                 dbOperations.Registrazione(nome, cognome, cf, nascita, email, username, password,ruolo.admin);
                 HttpSession session = req.getSession(true);
-                resp.sendRedirect("admin-page.jsp");
+                resp.sendRedirect("admin/admin-page.jsp");
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

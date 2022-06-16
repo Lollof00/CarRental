@@ -295,6 +295,7 @@
                         });
                         $(this).parents("tr").remove();
                         $(".add-new").removeAttr("disabled");
+                        location.reload()
                     });
                 });
             </script>

@@ -43,6 +43,11 @@
                         <h6 style="color: red;"><%= ServletUtility.getErrorMessage(request) %></h6>
                         <h6 style="color: green;"><%= ServletUtility.getSuccessMessage(request)%></h6>
                     </div>
+                    <div class="card-footer">
+                        <div class="d-flex justify-content-center">
+                            <a href="login-user.jsp">Sei un utente?</a>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>

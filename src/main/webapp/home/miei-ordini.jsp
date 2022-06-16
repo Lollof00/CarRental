@@ -56,30 +56,30 @@
 <header class="">
     <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <a class="navbar-brand" href="index.jsp"><h2>Car Rental<em></em></h2></a>
+            <a class="navbar-brand" href="${pageContext.request.contextPath}/home/index.jsp"><h2>Car Rental<em></em></h2></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.jsp">Home
+                        <a class="nav-link" href="${pageContext.request.contextPath}/home/index.jsp">Home
                             <span class="sr-only">(current)</span>
                         </a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="miei-ordini.jsp">I miei ordini</a>
+                        <a class="nav-link" href="${pageContext.request.contextPath}/home/miei-ordini.jsp">I miei ordini</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">About</a>
 
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="about.jsp">About Us</a>
-                            <a class="dropdown-item" href="team.jsp">Team</a>
+                            <a class="dropdown-item" href="${pageContext.request.contextPath}/home/about.jsp">About Us</a>
+                            <a class="dropdown-item" href="${pageContext.request.contextPath}/home/team.jsp">Team</a>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.jsp">Contattaci</a>
+                        <a class="nav-link" href="/contact.jsp">Contattaci</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="${pageContext.request.contextPath}/logout">Logout</a>
@@ -89,6 +89,39 @@
         </div>
     </nav>
 </header>
+
+
+<div class="modal" id="confermaPrenotazione" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><%=session.getAttribute("bookSuccess")%></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Ti abbiamo inviato un email con i dettagli del noleggio</p>
+            </div>
+            <div class="modal-footer">
+                <a href="miei-ordini.jsp"><button type="button" class="btn btn-primary">Vai ai miei ordini</button></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%
+    if(!(session.getAttribute("bookSuccess") ==null)){
+%>
+<script>
+    $(document).ready(function() {
+        $("#confermaPrenotazione").modal("show")
+    })
+</script>
+<%
+        session.setAttribute("bookSuccess",null);
+    }
+%>
 
 <div class="page-heading header-text">
     <div class="container">
@@ -105,7 +138,6 @@
         <div class="row">
             <% DbOperations dbOperations = new DbOperations();
                 ArrayList<ArrayList<String>> veicoli = dbOperations.getOrdiniUtente((String) session.getAttribute("username"));
-                System.out.println(veicoli);
                 for(ArrayList<String> veicolo : veicoli){
             %>
 

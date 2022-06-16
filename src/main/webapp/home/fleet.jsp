@@ -18,10 +18,8 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
 
-    <!-- Bootstrap core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Additional CSS Files -->
     <link rel="stylesheet" href="../assets/css/fontawesome.css">
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/owl.css">
@@ -34,19 +32,8 @@
 
   <body>
 
-  <%
-    if(!(session.getAttribute("bookSuccess") ==null)){
-  %>
-  <script>
-    $(document).ready(function() {
-      $("#confermaPrenotazione").modal("show")
-    })
-  </script>
-<%
-  }
-  %>
 
-    <!-- ***** Preloader Start ***** -->
+
     <div id="preloader">
         <div class="jumper">
             <div></div>
@@ -54,28 +41,9 @@
             <div></div>
         </div>
     </div>  
-    <!-- ***** Preloader End ***** -->
 
-  <div class="modal" id="confermaPrenotazione" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title"><%=session.getAttribute("bookSuccess")%></h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>Ti abbiamo inviato un email con i dettagli del noleggio</p>
-      </div>
-      <div class="modal-footer">
-        <a href="miei-ordini.jsp"><button type="button" class="btn btn-primary">Vai ai miei ordini</button></a>
-      </div>
-    </div>
-  </div>
-  </div>
 
-    <!-- Header -->
+
     <div class="sub-header">
       <div class="container">
         <div class="row">
@@ -130,7 +98,6 @@
       </nav>
     </header>
 
-    <!-- Page Content -->
     <div class="page-heading header-text">
       <div class="container">
         <div class="row">

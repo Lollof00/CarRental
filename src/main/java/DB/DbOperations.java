@@ -170,37 +170,21 @@ public class DbOperations {
     {
         ArrayList<ArrayList<String>> finishArray = new ArrayList<>();
         try{
-            result = connect.getConnection().prepareStatement("SELECT id_macchina,utente from public.ordini");
+            result = connect.getConnection().prepareStatement("SELECT * from public.macchine, public.ordini WHERE macchine.id = ordini.id_macchina and ordini.utente=?;");
+            result.setString(1, utente);
             ResultSet resultSet = result.executeQuery();
-
-
-            ArrayList<Integer> idOrdinati = new ArrayList<>();
+            ResultSetMetaData rsmd = resultSet.getMetaData();
+            int numColTot = rsmd.getColumnCount();
             while (resultSet.next()) {
-                String utenteConferma = resultSet.getString("utente");
-                if (utenteConferma.equals(utente))
-                {
-                    int id = resultSet.getInt("id_macchina");
-                    idOrdinati.add(id);
-                }
-            }
-
-
-            result = connect.getConnection().prepareStatement("SELECT * from public.macchine, public.ordini " +
-                                                                 "WHERE macchine.id = ordini.id_macchina");
-            ResultSet resultSet2 = result.executeQuery();
-            ResultSetMetaData rsmd2 = resultSet2.getMetaData();
-
-
-            int numColTot = rsmd2.getColumnCount();
-            while (resultSet2.next())
-            {
                 ArrayList<String> riga = new ArrayList<>();
-                for (int i = 1; i <= numColTot; i++)
-                {
-                    riga.add(resultSet2.getString(i));
+                for (int i = 1; i <= numColTot; i++) {
+
+                    riga.add(resultSet.getString(i));
                 }
                 finishArray.add(riga);
             }
+
+
 
         }catch (SQLException e)
         {

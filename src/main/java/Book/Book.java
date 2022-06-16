@@ -59,7 +59,7 @@ public class Book extends HttpServlet {
                         "Il giorno: "+pick_date_calendar.get(Calendar.DAY_OF_MONTH)+"/"+pick_date_calendar.get(Calendar.MONTH)+"\n"+"Luogo di consegna: "+drop_location+"\n"+"Il giorno: "+drop_date_calendar.get(Calendar.DAY_OF_MONTH)+"/"+drop_date_calendar.get(Calendar.MONTH)+"\n"+
                         "Email fornita: "+email+"\n"+"Numero ti telefono fornito: "+phone);
                 EmailUtility.sendMail(emailBean);
-                resp.sendRedirect("home/fleet.jsp");
+                resp.sendRedirect("home/miei-ordini.jsp");
             }
         } catch (SQLException e) {
             ServletUtility.setErrorMessage("La prenotazione non è andata a buon fine",req);

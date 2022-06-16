@@ -101,9 +101,7 @@
         <div class="row">
           <div class="col-md-6">
             <div class="left-content">
-              <h2>Modi esse sapiente tenetur <em>impedit laudantium laborum</em></h2>
-              <p>Pellentesque ultrices at turpis in vestibulum. Aenean pretium elit nec congue elementum. Nulla luctus laoreet porta. Maecenas at nisi tempus, porta metus vitae, faucibus augue. 
-              <br><br>Fusce et venenatis ex. Quisque varius, velit quis dictum sagittis, odio velit molestie nunc, ut posuere ante tortor ut neque.</p>
+              <h2>Anni di esperienza <em>ci hanno portato ad essere un leader nel settore del noleggio auto</em></h2>
             </div>
           </div>
           <div class="col-md-6 align-self-center">
@@ -111,13 +109,13 @@
               <div class="col-md-6">
                 <div class="count-area-content">
                   <div class="count-digit"><%=dbOperations.conteggioMacchine()%></div>
-                  <div class="count-title">Macchine</div>
+                  <div class="count-title">Macchine noleggiate</div>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="count-area-content">
                   <div class="count-digit"><%=dbOperations.conteggioOrdini()%></div>
-                  <div class="count-title">Ordini</div>
+                  <div class="count-title">Ordini effettuati</div>
                 </div>
               </div>
               <div class="col-md-6">
@@ -129,7 +127,7 @@
               <div class="col-md-6">
                 <div class="count-area-content">
                   <div class="count-digit"><%=dbOperations.conteggioUtenti()%></div>
-                  <div class="count-title">Utenti</div>
+                  <div class="count-title">Utenti registrati</div>
                 </div>
               </div>
             </div>
