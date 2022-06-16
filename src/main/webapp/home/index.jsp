@@ -146,7 +146,7 @@
             for (ArrayList<String> aereoporto: aereoportiAndata)
             {
           %>
-            <option value=<%=aereoporto.get(1)%>><%=aereoporto.get(1)%> (<%=aereoporto.get(3)%>)</option>
+            <option value=<%=aereoporto.get(1)%>><%=aereoporto.get(1)%> - <%=aereoporto.get(2)%> (<%=aereoporto.get(3)%>)</option>
           <%
             }
           %>
@@ -160,7 +160,7 @@
               {
 
             %>
-            <option value=<%=aereoporto.get(1)%>><%=aereoporto.get(1)%> (<%=aereoporto.get(3)%>)</option>
+            <option value=<%=aereoporto.get(1)%>><%=aereoporto.get(1)%> - <%=aereoporto.get(2)%> (<%=aereoporto.get(3)%>)</option>
             <%
               }
             %>
