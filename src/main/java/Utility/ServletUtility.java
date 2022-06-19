@@ -8,19 +8,8 @@ import java.io.IOException;
 
 public class ServletUtility {
     static String Error ="Invalid data";
-    static String SuccessMessage = "Done";
+    static String SuccessMessage = "Ok";
 
-    public  static void forward(String page, HttpServletRequest request, HttpServletResponse response)throws IOException,ServletException{
-        RequestDispatcher rd = request.getRequestDispatcher(page);
-        System.out.println(page);
-        rd.forward(request,response);
-    }
-
-    public void handleException(Exception e, HttpServletRequest request, HttpServletResponse response)throws IOException, ServletException{
-        request.setAttribute("exception",e);
-        ServletUtility.forward("Error Message",request,response);
-        e.printStackTrace();
-    }
 
     public static String getErrorMessage(String property, HttpServletRequest request){
         String val = (String) request.getAttribute(property);

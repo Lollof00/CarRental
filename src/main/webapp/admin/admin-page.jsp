@@ -118,7 +118,7 @@
 <header class="">
     <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <a class="navbar-brand" href="index.jsp"><h2>Car Rental</h2></a>
+            <a class="navbar-brand" href="admin-page.jsp"><h2>Car Rental</h2></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -299,14 +299,14 @@
                     });
                 });
             </script>
-        <h6 style="color: red;"><%= ServletUtility.getErrorMessage(request) %></h6>
-        <h6 style="color: green;"><%= ServletUtility.getSuccessMessage(request)%></h6>
         <div class="container-lg">
             <div class="table-responsive">
                 <div class="table-wrapper">
                     <div class="table-title">
                         <div class="row">
                             <div class="col-sm-8"><h2>Dettagli <b>Macchine</b></h2></div>
+                            <h6 style="color: red;"><%= ServletUtility.getErrorMessage(request) %></h6>
+                            <h6 style="color: green;"><%= ServletUtility.getSuccessMessage(request)%></h6>
                             <div class="col-sm-4">
                                 <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add New</button>
                             </div>
@@ -340,7 +340,7 @@
                             <td><%=veicolo.get(4)%></td>
                             <td><%=veicolo.get(5)%></td>
                             <td><%=veicolo.get(6)%></td>
-                            <td><img src="../carImage/<%=veicolo.get(7)%>" width="100" height="100"></td>
+                            <td><img src="${pageContext.request.contextPath}/carImage/<%=veicolo.get(7)%>" width="100" height="100"></td>
                             <td>
                                 <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
                                 <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
